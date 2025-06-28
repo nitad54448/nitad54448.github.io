@@ -3,327 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Projects</title>
+    <title>Public Software | Scientific & Research Utilities</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* General Body Styles */
+        /* Use Poppins as the default font */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 40px;
-            background-color: #f6f8fa;
-            color: #24292e;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827; /* Dark gray-blue background */
+            background-image: radial-gradient(circle at 1px 1px, #374151 1px, transparent 0);
+            background-size: 25px 25px;
         }
 
-        /* Header Styles */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .header h1 {
-            font-size: 2.5em;
-            font-weight: 600;
-            color: #0366d6;
-            border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 15px;
-        }
-        .header p {
-            font-size: 1.1em;
-            color: #586069;
+        /* Glassmorphism effect for cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        /* Repository Grid Layout */
-        .repository-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-            padding: 0;
-            list-style-type: none;
-        }
-
-        /* Individual Repository Card Styles */
-        .repository-card {
-            background-color: #fff;
-            border: 1px solid #d1d5da;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            display: flex;
-            flex-direction: column;
-        }
-        .repository-card:hover {
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        /* Card Content Styles */
-        .repository-card h2 {
-            margin: 0 0 12px 0;
-            font-size: 1.6em;
-        }
-        .repository-card h2 a {
-            text-decoration: none;
-            color: #0366d6;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-        .repository-card h2 a:hover {
-            text-decoration: underline;
-        }
-        .repository-card h2 a svg {
-            margin-right: 8px;
-            fill: currentColor;
-            width: 24px;
-            height: 24px;
-        }
-        .description {
-            margin-bottom: 16px;
-            color: #586069;
-            font-size: 0.95em;
-            line-height: 1.5;
-            flex-grow: 1; /* This makes the description expand, keeping card heights equal */
         }
         
-        /* Styles for the footer section of each card */
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 16px;
-            font-size: 0.9em;
-            color: #586069;
+        /* Card Icon animation */
+        .card-icon-link:hover svg {
+            transform: scale(1.1) rotate(5deg);
         }
         
-        .language {
-            background-color: #f1f8ff;
-            padding: 4px 10px;
-            border-radius: 2em;
-        }
-
-        .repo-link {
-            text-decoration: none;
-            font-weight: 500;
-            color: #0366d6;
-        }
-        .repo-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Other Links Section */
-        .other-links {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #e1e4e8;
-            text-align: center;
-        }
-        .other-links h2 {
-            font-size: 1.8em;
-            color: #24292e;
-            margin-bottom: 20px;
-        }
-        .other-links ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .other-links a {
-            text-decoration: none;
-            color: #0366d6;
-            font-weight: 500;
-            font-size: 1.1em;
-        }
-        .other-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer Styles */
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            font-size: 0.9em;
-            color: #6a737d;
-        }
     </style>
 </head>
-<body>
+<body class="text-gray-200">
 
-    <header class="header">
-        <h1>My Public GitHub Projects</h1>
-        <p>A collection of scientific software and utilities primarily developed in LabVIEW and JavaScript.</p>
-    </header>
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
 
-    <ul class="repository-grid">
-        <!-- LabVIEW Projects with New Icons -->
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/yappari-5-1" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M4 4h16v12H4V4m0-2C2.9 2 2 2.9 2 4v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 14h12v2H6v-2zm-2.5-5H1v4h2.5v-4zm21 0H22v4h-2.5v-4zM22 6V4h-2v2h2zM3.5 6V4h-2v2h2z"/></svg>
-                    yappari-5-1
-                </a>
-            </h2>
-            <p class="description">"Yet Another Program for Analysis and Research in Impedance" (YAPPARI). A comprehensive Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, Distribution of Relaxation Times (DRT) analysis, Hilbert transform (Z-Hit) calculations, and spectra simulations.</p>
-            <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank">
-                     <svg viewBox="0 0 24 24"><path d="M13 2v10h3l-4 9-4-9h3V2h2z"/></svg>
-                    Keithley622x Control
-                </a>
-            </h2>
-            <p class="description">A state machine-based application built in Labview 2018 to control a Keithley 6221 AC/DC current source. It offers partial compatibility with the Keithley 6220 model, enabling automated control for precision experiments.</p>
-            <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/ppms_control" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M20.2 6H18V4.5c0-.8-.7-1.5-1.5-1.5H7.5c-.8 0-1.5.7-1.5 1.5V6H3.8c-1 0-1.8.8-1.8 1.8v10.4c0 1 .8 1.8 1.8 1.8h16.4c1 0 1.8-.8 1.8-1.8V7.8c0-1-.8-1.8-1.8-1.8zM8 4.5h8V6H8V4.5zm8 10.5c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm-4-4c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zM4 18V8h2v10H4z"/></svg>
-                    PPMS Control
-                </a>
-            </h2>
-            <p class="description">LabVIEW VIs for controlling a Quantum Design Physical Property Measurement System (PPMS). Includes modules for setting and monitoring temperature and magnetic fields via GPIB.</p>
-            <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H4V5h16v14zM6 7h2v2H6zm10 0h2v2h-2zm-5 4h2v2h-2zm-5 4h2v2H6zm10 0h2v2h-2z"/></svg>
-                    Van der Pauw Calculator
-                </a>
-            </h2>
-            <p class="description">A simple VI (Virtual Instrument) in Labview 2018 designed to calculate resistivity and Hall coefficient values from measurements obtained using the van der Pauw method.</p>
-             <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5z"/></svg>
-                    High Pressure Calculator
-                </a>
-            </h2>
-            <p class="description">A utility for high-pressure physics experiments. This Labview 2018 program provides a simple calculation of pressure based on the spectral shift of the ruby fluorescence line.</p>
-             <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/calculate_Seebeck" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M8 16h8v2H8zm0-4h8v2H8zm5-4h3v2h-3zm-5-2h8v2H8zM4 2v20h16V2H4zm14 18H6V4h12v16z"/></svg>
-                    Seebeck Calculator
-                </a>
-            </h2>
-            <p class="description">A LabVIEW program to calculate the absolute values of the Seebeck coefficient for individual thermoelectric legs and for complete thermoelectric couples.</p>
-             <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/programmable_Resistor" target="_blank">
-                   <svg viewBox="0 0 24 24"><path d="M4 11h16v2H4zM10 5h4v14h-4z"/></svg>
-                    Programmable Resistor
-                </a>
-            </h2>
-            <p class="description">A LabVIEW project to design and simulate the behavior of a programmable resistor, useful for circuit design and automated testing environments.</p>
-             <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://github.com/nitad54448/QR10x_Labview_drivers" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M5 10h14v4H5zm6-5h2v14h-2z"/></svg>
-                    QR10x LabVIEW Drivers
-                </a>
-            </h2>
-            <p class="description">A set of LabVIEW drivers for controlling QR-10x programmable resistors, enabling integration into automated filtering in Wheatstone bridge systems.</p>
-             <div class="card-footer">
-                <span class="language">Language: Labview</span>
-            </div>
-        </li>
+        <!-- Header Section -->
+        <header class="text-center my-12 md:my-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Public Software</h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                A collection of scientific software and utilities primarily developed in LabVIEW and JavaScript to advance research and experimentation.
+            </p>
+        </header>
 
-        <!-- JavaScript Projects with New Icons -->
-        <li class="repository-card">
-            <h2>
-                <a href="https://nitad54448.github.io/Enseignement" target="_blank">
-                   <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    Teaching Simulations
-                </a>
-            </h2>
-            <p class="description">A collection of interactive web-based simulations for educational purposes, designed to help visualize and understand various scientific concepts.</p>
-            <div class="card-footer">
-                <span class="language">Language: JS</span>
-                <a href="https://github.com/nitad54448/Enseignement" class="repo-link" target="_blank">View Repository</a>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://nitad54448.github.io/sps/" target="_blank">
-                   <svg viewBox="0 0 24 24"><path d="M10.2 3.1l-2.4 4.8-5.3.8 3.8 3.7-.9 5.3 4.8-2.5 4.8 2.5-.9-5.3 3.8-3.7-5.3-.8-2.4-4.8zM12 15.4l-3.3 1.7.6-3.7-2.7-2.6 3.7-.5L12 6.6l1.6 3.4 3.7.5-2.7 2.6.6 3.7-3.3-1.7z"/></svg>
-                    SPS Control
-                </a>
-            </h2>
-            <p class="description">An interactive web application for controlling a Spark Plasma Sintering (SPS) system.</p>
-            <div class="card-footer">
-                <span class="language">Language: JS</span>
-                <a href="https://github.com/nitad54448/sps" class="repo-link" target="_blank">View Repository</a>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://nitad54448.github.io/pvd/" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.41 0 8-3.59 8-8s-3.59-8-8-8-8 3.59-8 8 3.59 8 8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    PVD Control
-                </a>
-            </h2>
-            <p class="description">A web-based interface to control a Physical Vapor Deposition (PVD) system, managing the deposition process parameters.</p>
-            <div class="card-footer">
-                <span class="language">Language: JS</span>
-                <a href="https://github.com/nitad54448/pvd" class="repo-link" target="_blank">View Repository</a>
-            </div>
-        </li>
-        <li class="repository-card">
-            <h2>
-                <a href="https://nitad54448.github.io/cvd/" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    CVD Control
-                </a>
-            </h2>
-            <p class="description">A web application for controlling a Chemical Vapor Deposition (CVD) system, enabling the automation of gas flow, temperature, and pressure.</p>
-            <div class="card-footer">
-                <span class="language">Language: JS</span>
-                <a href="https://github.com/nitad54448/cvd" class="repo-link" target="_blank">View Repository</a>
-            </div>
-        </li>
-    </ul>
+        <!-- Main Content: Repository Grid -->
+        <main>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <section class="other-links">
-        <h2>Other Links</h2>
-        <ul>
-            <li><a href="https://www.icmmo.universite-paris-saclay.fr/fr/perso/nita-dragoe/" target="_blank" rel="noopener noreferrer">University Profile</a></li>
-            <li><a href="https://scholar.google.com/citations?user=6S5F9fMAAAAJ&hl=fr" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-            <li><a href="https://orcid.org/0000-0002-5142-9021" target="_blank" rel="noopener noreferrer">ORCID</a></li>
-            <li><a href="https://www.researchgate.net/profile/Nita-Dragoe" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
-        </ul>
-    </section>
+                <!-- yappari-5-1 -->
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/yappari-5-1" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                             <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <span>yappari-5-1</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A comprehensive Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, DRT analysis, Hilbert transform (Z-Hit) calculations, and more.</p>
+                    <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
 
-    <footer class="footer">
-        <p>Updated on June 28, 2025</p>
-    </footer>
+                <!-- Keithley622x Control -->
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                            <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <span>Keithley622x Control</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A state machine-based application to control a Keithley 6221 AC/DC current source for precision experiments.</p>
+                    <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+
+                <!-- PPMS Control -->
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/ppms_control" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                           <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>PPMS Control</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">LabVIEW VIs for controlling a Quantum Design Physical Property Measurement System (PPMS) via GPIB.</p>
+                    <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+                
+                <!-- Van der Pauw Calculator -->
+                 <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                           <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-6m-6 6V7m0 10h6m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Van der Pauw Calculator</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A simple VI to calculate resistivity and Hall coefficient values from measurements using the van der Pauw method.</p>
+                     <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+
+                <!-- Other LabVIEW Projects... -->
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                     <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                            <svg class="w-7 h-7 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                            <span>High Pressure Calculator</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">Calculates pressure based on the spectral shift of the ruby fluorescence line for high-pressure physics experiments.</p>
+                     <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                     <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/calculate_Seebeck" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                           <svg class="w-7 h-7 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-1.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
+                            <span>Seebeck Calculator</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">Calculates the absolute Seebeck coefficient for individual thermoelectric legs and complete couples.</p>
+                     <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+                 <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/programmable_Resistor" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                            <svg class="w-7 h-7 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 21v-1.5M15.75 3v1.5M12 4.5v15" /></svg>
+                            <span>Programmable Resistor</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A LabVIEW project to design and simulate the behavior of a programmable resistor for automated testing.</p>
+                     <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                     <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://github.com/nitad54448/QR10x_Labview_drivers" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                           <svg class="w-7 h-7 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 12l4.179 2.25m0 0l5.571 3m5.571-3l-5.571 3m0 0l-5.571-3m11.142 0l4.179-2.25L12 9.75" /></svg>
+                            <span>QR10x LabVIEW Drivers</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">Drivers for controlling QR-10x programmable resistors in Wheatstone bridge systems.</p>
+                     <div class="card-footer mt-4">
+                        <span class="language text-sm font-medium bg-gray-700 text-cyan-300 px-3 py-1 rounded-full">LabVIEW</span>
+                    </div>
+                </div>
+
+                <!-- JavaScript Projects -->
+                <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://nitad54448.github.io/Enseignement" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                            <svg class="w-7 h-7 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V5.75A2.25 2.25 0 0018 3.5H6A2.25 2.25 0 003.75 5.75v12.5A2.25 2.25 0 006 20.25z" /></svg>
+                            <span>Teaching Simulations</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A collection of interactive web-based simulations for educational purposes to help visualize scientific concepts.</p>
+                    <div class="card-footer mt-4 flex justify-between items-center">
+                        <span class="language text-sm font-medium bg-gray-700 text-teal-300 px-3 py-1 rounded-full">JavaScript</span>
+                        <a href="https://github.com/nitad54448/Enseignement" class="repo-link text-teal-400 hover:text-teal-300" target="_blank">View Repo</a>
+                    </div>
+                </div>
+                 <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://nitad54448.github.io/sps/" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                           <svg class="w-7 h-7 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 22.5l-.648-1.938a3.375 3.375 0 00-2.672-2.672L11.25 18l1.938-.648a3.375 3.375 0 002.672-2.672L16.25 13l.648 1.938a3.375 3.375 0 002.672 2.672L21.75 18l-1.938.648a3.375 3.375 0 00-2.672 2.672z" /></svg>
+                            <span>SPS Control</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">An interactive web application for controlling a Spark Plasma Sintering (SPS) system.</p>
+                    <div class="card-footer mt-4 flex justify-between items-center">
+                        <span class="language text-sm font-medium bg-gray-700 text-teal-300 px-3 py-1 rounded-full">JavaScript</span>
+                        <a href="https://github.com/nitad54448/sps" class="repo-link text-teal-400 hover:text-teal-300" target="_blank">View Repo</a>
+                    </div>
+                </div>
+                 <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://nitad54448.github.io/pvd/" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                           <svg class="w-7 h-7 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span>PVD Control</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A web-based interface to control a Physical Vapor Deposition (PVD) system.</p>
+                    <div class="card-footer mt-4 flex justify-between items-center">
+                        <span class="language text-sm font-medium bg-gray-700 text-teal-300 px-3 py-1 rounded-full">JavaScript</span>
+                        <a href="https://github.com/nitad54448/pvd" class="repo-link text-teal-400 hover:text-teal-300" target="_blank">View Repo</a>
+                    </div>
+                </div>
+                 <div class="glass-card rounded-xl p-6 flex flex-col">
+                    <h2 class="text-2xl font-semibold text-white mb-3">
+                        <a href="https://nitad54448.github.io/cvd/" target="_blank" class="flex items-center space-x-3 card-icon-link">
+                            <svg class="w-7 h-7 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0C4.445 17.69 2.25 14.418 2.25 10.5a9.75 9.75 0 0119.5 0c0 3.918-2.195 7.19-5.25 8.062z" /></svg>
+                            <span>CVD Control</span>
+                        </a>
+                    </h2>
+                    <p class="description text-gray-400 flex-grow">A web application for controlling a Chemical Vapor Deposition (CVD) system.</p>
+                    <div class="card-footer mt-4 flex justify-between items-center">
+                        <span class="language text-sm font-medium bg-gray-700 text-teal-300 px-3 py-1 rounded-full">JavaScript</span>
+                        <a href="https://github.com/nitad54448/cvd" class="repo-link text-teal-400 hover:text-teal-300" target="_blank">View Repo</a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Other Links Section -->
+        <section class="text-center my-20 md:my-32">
+             <h2 class="text-3xl font-bold text-white mb-8">Professional Profiles</h2>
+             <div class="flex justify-center items-center space-x-6 md:space-x-8">
+                 <a href="https://www.icmmo.universite-paris-saclay.fr/fr/perso/nita-dragoe/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="University Profile">
+                    <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
+                 </a>
+                 <a href="https://scholar.google.com/citations?user=6S5F9fMAAAAJ&hl=fr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="Google Scholar">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 13.88c-2.14 0-4.13-.88-5.59-2.31l1.41-1.41c1.08.97 2.45 1.57 3.98 1.57s2.9-.6 3.98-1.57l1.41 1.41c-1.46 1.43-3.45 2.31-5.59 2.31zm0-9.88c-1.18 0-2.25.48-3.03 1.25l1.41 1.41c.4-.38 1-.61 1.62-.61s1.22.23 1.62.61l1.41-1.41c-.78-.77-1.85-1.25-3.03-1.25z"/></svg>
+                 </a>
+                 <a href="https://orcid.org/0000-0002-5142-9021" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="ORCID">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 20-10 20zM9.5 6h-2v10h2V6zm4.75 0h-2v2h2v8h-2v2h4v-2h-2V6zm-3.25 2h-1.5v2h1.5V8z"/></svg>
+                 </a>
+                 <a href="https://www.researchgate.net/profile/Nita-Dragoe" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" title="ResearchGate">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-4h2v-4H8v4zm4 0h2v-6h-2v6zm4 0h2V8h-2v8z"/></svg>
+                 </a>
+             </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 pb-8">
+            <p class="text-gray-500">Last updated on June 28, 2025</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
