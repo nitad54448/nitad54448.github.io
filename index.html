@@ -3,124 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> GitHub Repositories</title>
+    <title>My GitHub Projects</title>
     <style>
+        /* General Body Styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 40px;
             background-color: #f6f8fa;
             color: #24292e;
         }
-        h1 {
+
+        /* Header Styles */
+        .header {
             text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 600;
             color: #0366d6;
             border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            padding-bottom: 15px;
         }
-        .repository-list {
-            list-style-type: none;
+        .header p {
+            font-size: 1.1em;
+            color: #586069;
+        }
+
+        /* Repository Grid Layout */
+        .repository-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
             padding: 0;
+            list-style-type: none;
         }
-        .repository-item {
+
+        /* Individual Repository Card Styles */
+        .repository-card {
             background-color: #fff;
             border: 1px solid #d1d5da;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.12);
-            transition: box-shadow 0.2s ease-in-out;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
-        .repository-item:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.18);
+        .repository-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
-        .repository-item h2 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 1.5em;
+
+        /* Card Content Styles */
+        .repository-card h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.6em;
         }
-        .repository-item h2 a {
+        .repository-card h2 a {
             text-decoration: none;
             color: #0366d6;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
         }
-        .repository-item h2 a:hover {
+        .repository-card h2 a:hover {
             text-decoration: underline;
         }
-        .repository-item p {
-            margin-bottom: 4px;
+        .repository-card h2 a svg {
+            margin-right: 8px;
+            fill: currentColor;
+        }
+        .repository-card .description {
+            margin-bottom: 16px;
             color: #586069;
             font-size: 0.95em;
+            line-height: 1.5;
+            flex-grow: 1; /* Ensures cards in a row have same height */
         }
-        .repository-item .language {
-            font-size: 0.9em;
+        .repository-card .language {
+            font-size: 0.85em;
             color: #586069;
             background-color: #f1f8ff;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 2em;
             display: inline-block;
-            margin-top: 8px;
         }
+
+        /* Footer Styles */
         .footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 60px;
             font-size: 0.9em;
-            color: #586069;
+            color: #6a737d;
         }
     </style>
 </head>
 <body>
-    <h1>My public GitHub repositories</h1>
 
-    <ul class="repository-list">
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/calculate_Seebeck" target="_blank">Calculate_Seebeck</a></h2>
-            <p><strong>Description:</strong> calculate absolute values of Seebeck coefficienf of legs and couples</p>
+    <header class="header">
+        <h1>My Public GitHub Projects</h1>
+        <p>A collection of scientific software and utilities primarily developed in LabVIEW and JavaScript.</p>
+    </header>
+
+    <ul class="repository-grid">
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/yappari-5-1" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    yappari-5-1
+                </a>
+            </h2>
+            <p class="description">"Yet Another Program for Analysis and Research in Impedance" (YAPPARI). A comprehensive Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, Distribution of Relaxation Times (DRT) analysis, Hilbert transform (Z-Hit) calculations, and spectra simulations.</p>
             <p class="language">Language: Labview</p>
         </li>
-        <li class="repository-item">
-            <h2><a href="https://nitad54448.github.io/Enseignement" target="_blank">Teaching</a></h2>
-            <p><strong>Description:</strong> Simulations.</p>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Keithley622x Control
+                </a>
+            </h2>
+            <p class="description">A state machine-based application built in Labview 2018 to control a Keithley 6221 AC/DC current source. It offers partial compatibility with the Keithley 6220 model, enabling automated control for precision experiments.</p>
+            <p class="language">Language: Labview</p>
+        </li>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/ppms_control" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    PPMS Control
+                </a>
+            </h2>
+            <p class="description">LabVIEW VIs for controlling a Quantum Design Physical Property Measurement System (PPMS). Includes modules for setting and monitoring temperature and magnetic fields via GPIB.</p>
+            <p class="language">Language: Labview</p>
+        </li>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Van der Pauw Calculator
+                </a>
+            </h2>
+            <p class="description">A simple VI (Virtual Instrument) in Labview 2018 designed to calculate resistivity and Hall coefficient values from measurements obtained using the van der Pauw method.</p>
+            <p class="language">Language: Labview</p>
+        </li>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    High Pressure Calculator
+                </a>
+            </h2>
+            <p class="description">A utility for high-pressure physics experiments. This Labview 2018 program provides a simple calculation of pressure based on the spectral shift of the ruby fluorescence line.</p>
+            <p class="language">Language: Labview</p>
+        </li>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/calculate_Seebeck" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Seebeck Calculator
+                </a>
+            </h2>
+            <p class="description">A LabVIEW program to calculate the absolute values of the Seebeck coefficient for individual thermoelectric legs and for complete thermoelectric couples.</p>
+            <p class="language">Language: Labview</p>
+        </li>
+         <li class="repository-card">
+            <h2>
+                <a href="https://nitad54448.github.io/Enseignement" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Teaching Simulations
+                </a>
+            </h2>
+            <p class="description">A collection of interactive web-based simulations for educational purposes, designed to help visualize and understand various scientific concepts.</p>
             <p class="language">Language: JS</p>
         </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank">high_pressure_Ruby</a></h2>
-            <p><strong>Description:</strong> simple calculation of the pressure, based on the ruby fluorescence line. Labview 2018</p>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/programmable_Resistor" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Programmable Resistor
+                </a>
+            </h2>
+            <p class="description">A LabVIEW project to design and simulate the behavior of a programmable resistor, useful for circuit design and automated testing environments.</p>
             <p class="language">Language: Labview</p>
         </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank">Keithley622x_control_Labview</a></h2>
-            <p><strong>Description:</strong> a simple state machine in Labview 2018 to control a Keithley 6221 AC/DC source. Will work, in part, with a 6220 source.</p>
-            <p class="language">Language: Labview</p>
-        </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/ppms_control" target="_blank">ppms_control</a></h2>
-            <p><strong>Description:</strong> simple code for ppms control with Labview</p>
-            <p class="language">Language: Labview</p>
-        </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/programmable_Resistor" target="_blank">programmable_Resistor</a></h2>
-            <p><strong>Description:</strong> calculate and build a programmable resistor in Labview</p>
-            <p class="language">Language: Labview</p>
-        </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/QR10x_Labview_drivers" target="_blank">QR10x_Labview_drivers</a></h2>
-            <p><strong>Description:</strong> QR10x_Labview_drivers</p>
+        <li class="repository-card">
+            <h2>
+                <a href="https://github.com/nitad54448/QR10x_Labview_drivers" target="_blank">
+                    <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    QR10x LabVIEW Drivers
+                </a>
+            </h2>
+            <p class="description">A set of LabVIEW drivers for controlling NKT Photonics QR-10x series lasers, enabling integration into automated optical measurement systems.</p>
             <p class="language">Language: LabVIEW</p>
         </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank">van_der_Pauw_Labview</a></h2>
-            <p><strong>Description:</strong> a simple vi in Labview 2018 to calculate van der Pauw values of resistance</p>
-            <p class="language">Language: Labview</p>
-        </li>
-        <li class="repository-item">
-            <h2><a href="https://github.com/nitad54448/yappari-5-1" target="_blank">yappari-5-1</a></h2>
-            <p><strong>Description:</strong> Yappari</p>
-            <p class="language">Language: Labview</p>
-        </li>
     </ul>
-    <div class="footer">
-        <p>Updated on June 10, 2025</p>
-    </div>
+
+    <footer class="footer">
+        <p>Updated on June 28, 2025</p>
+    </footer>
+
 </body>
 </html>
