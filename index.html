@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Software | Scientific & Research Utilities</title>
     
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -48,7 +46,6 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-7xl">
 
-        <!-- Header Section -->
         <header class="text-center my-12 md:my-20">
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Some software</h1>
             <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
@@ -56,11 +53,9 @@
             </p>
         </header>
 
-        <!-- Main Content: Repository Grid -->
         <main>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- yappari-5-1 -->
                 <div class="glass-card rounded-xl p-6 flex flex-col">
                     <h2 class="text-2xl font-semibold text-white mb-3">
                         <a href="https://github.com/nitad54448/yappari-5-1" target="_blank" class="flex items-center space-x-3 card-icon-link">
@@ -74,7 +69,6 @@
                     </div>
                 </div>
 
-                <!-- Keithley622x Control -->
                 <div class="glass-card rounded-xl p-6 flex flex-col">
                     <h2 class="text-2xl font-semibold text-white mb-3">
                         <a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank" class="flex items-center space-x-3 card-icon-link">
@@ -88,7 +82,6 @@
                     </div>
                 </div>
 
-                <!-- PPMS Control -->
                 <div class="glass-card rounded-xl p-6 flex flex-col">
                     <h2 class="text-2xl font-semibold text-white mb-3">
                         <a href="https://github.com/nitad54448/ppms_control" target="_blank" class="flex items-center space-x-3 card-icon-link">
@@ -102,8 +95,7 @@
                     </div>
                 </div>
                 
-                <!-- Van der Pauw Calculator -->
-                 <div class="glass-card rounded-xl p-6 flex flex-col">
+                <div class="glass-card rounded-xl p-6 flex flex-col">
                     <h2 class="text-2xl font-semibold text-white mb-3">
                         <a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank" class="flex items-center space-x-3 card-icon-link">
                            <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-6m-6 6V7m0 10h6m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -116,7 +108,6 @@
                     </div>
                 </div>
 
-                <!-- Other LabVIEW Projects... -->
                 <div class="glass-card rounded-xl p-6 flex flex-col">
                      <h2 class="text-2xl font-semibold text-white mb-3">
                         <a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank" class="flex items-center space-x-3 card-icon-link">
@@ -167,7 +158,6 @@
                     </div>
                 </div>
 
-                <!-- JavaScript Projects -->
                 <div class="glass-card rounded-xl p-6 flex flex-col">
                     <h2 class="text-2xl font-semibold text-white mb-3">
                         <a href="https://nitad54448.github.io/Enseignement" target="_blank" class="flex items-center space-x-3 card-icon-link">
@@ -224,7 +214,6 @@
             </div>
         </main>
 
-        <!-- Other Links Section -->
         <section class="text-center my-20 md:my-32">
              <h2 class="text-3xl font-bold text-white mb-8">Professional Profiles</h2>
              <div class="flex justify-center items-center space-x-6 md:space-x-8">
@@ -243,12 +232,43 @@
              </div>
         </section>
 
-        <!-- Footer -->
         <footer class="text-center mt-16 pb-8">
             <p class="text-gray-500">Last updated on June 28, 2025</p>
         </footer>
 
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.glass-card');
+    
+            cards.forEach(card => {
+                // Set a pointer cursor on hover for the entire card to indicate it's clickable
+                card.style.cursor = 'pointer';
+    
+                card.addEventListener('click', function(event) {
+                    // If the user clicked directly on an element that is already a link (or inside one),
+                    // let the browser handle the navigation and do nothing in the script.
+                    if (event.target.closest('a')) {
+                        return;
+                    }
+    
+                    // Find the main link, which is the one inside the <h2> tag
+                    const mainLink = card.querySelector('h2 > a');
+    
+                    // If a main link exists, navigate to its URL
+                    if (mainLink && mainLink.href) {
+                        // Manually perform the navigation. This respects the link's `target` attribute (e.g., `_blank`).
+                        if (mainLink.target === '_blank') {
+                            window.open(mainLink.href, '_blank', 'noopener noreferrer');
+                        } else {
+                            window.location.href = mainLink.href;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
