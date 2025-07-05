@@ -10,7 +10,7 @@ This is a collection of software utilities written in LabVIEW and JavaScript for
 
 * [**🌊 WaveXplorer**](https://nitad54448.github.io/Enseignement/WaveXplorer.html): Visualizing fundamental concepts of waves.
 * [**💎 Miller Planes Viewer**](https://nitad54448.github.io/Enseignement/Miller.html): Visualize (hkl) crystallographic planes.
-* [**↔️ Direction Visualizer**](https://nitad54448.github.io/Enseignement/Directions.html): Visualize \[uvw] crystallographic directions.
+* [**↔️ Direction Visualizer**](https://nitad54448.github.io/Enseignement/Directions.html): Visualize [uvw] crystallographic directions.
 * [**🌐 Reciprocal Space Viewer**](https://nitad54448.github.io/Enseignement/RSpace.html): Visualization of a reciprocal lattice for all crystal systems.
 * [**⚛️ Atomic Energy Levels**](https://nitad54448.github.io/Enseignement/niveaux_atomiques.html): Schematically displays atomic energy levels (K, L, M).
 * [**📈 XRD Emission Spectra**](https://nitad54448.github.io/Enseignement/Emission.html): Generates and displays X-ray emission spectra.
@@ -51,6 +51,8 @@ This is a collection of software utilities written in LabVIEW and JavaScript for
 ## Others
 
 * [**Fibonacci**](https://github.com/nitad54448/Fibonacci): A LabVIEW project to compute and visualize the Fibonacci sequence.
+* [**powder4_source**](https://github.com/nitad54448/powder4_source): An old utility for converting files and other powder X-ray diffraction analysis. (Language: Visual Basic)
+* [**Versatile**](https://github.com/nitad54448/Versatile): A computer program for calculating non-isothermal kinetic parameters. (Language: Visual Basic)
 
 ## Professional Profiles
 
@@ -59,4 +61,4 @@ This is a collection of software utilities written in LabVIEW and JavaScript for
 * [ORCID](https://orcid.org/0000-0002-5142-9021)
 * [ResearchGate](https://www.researchgate.net/profile/Nita-Dragoe)
 
-*Last updated on July 4, 2025*
+*Last updated on July 5, 2025*
