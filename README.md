@@ -33,7 +33,6 @@ This is a collection of software utilities written in LabVIEW and JavaScript for
 * [**FG_save**](https://github.com/nitad54448/FG_save): A Functional Global utility to save data to ASCII files.
 * [**Report Generator**](https://github.com/nitad54448/create_report): Generate reports from a Tab control in the user interface.
 * [**Splash**](https://github.com/nitad54448/splash): Animated GIF splash window for LabVIEW programs.
-* [**QR10x LabVIEW Drivers**](https://github.com/nitad54448/QR10x_Labview_drivers): Drivers for controlling QR-10x programmable resistors.
 * [**message_box**](https://github.com/nitad54448/message_box): A utility for creating custom message boxes in LabVIEW.
 * [**Graph with Y error bars**](https://github.com/nitad54448/XY_graph): A LabVIEW utility for creating XY graphs with Y error bars.
 
@@ -41,6 +40,7 @@ This is a collection of software utilities written in LabVIEW and JavaScript for
 
 * [**Keithley622x Control**](https://github.com/nitad54448/Keithley622x_control_Labview): Control a Keithley 6221 AC/DC current source.
 * [**PPMS Control**](https://github.com/nitad54448/ppms_control): VIs for controlling a Quantum Design PPMS via GPIB.
+* [**QR10x LabVIEW Drivers**](https://github.com/nitad54448/QR10x_Labview_drivers): Drivers for controlling QR-10x programmable resistors.
 
 ## Design of Experiments
 
