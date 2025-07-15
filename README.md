@@ -24,6 +24,7 @@
 * [**⚛️ Atomic Energy Levels**](https://nitad54448.github.io/Enseignement/niveaux_atomiques.html): This viewer schematically displays atomic energy levels (K, L, M) for different elements. (Language: JS)
 * [**📈 XRD Emission Spectra**](https://nitad54448.github.io/Enseignement/Emission.html): This simulator generates and displays X-ray emission spectra. (Language: JS)
 * [**📊 XRD Absorption & Filters**](https://nitad54448.github.io/Enseignement/filtres.html): This tool simulates the X-ray emission from an anode and the effect of a filter. (Language: JS)
+* [**⚙️ XRD Monochromators**](https://nitad54448.github.io/Enseignement/monochromateur.html): Simulates the effect of a single crystal monochromator on an X-ray spectrum, including mosaicity and higher orders. (Language: JS)
 * [**🌍 Ewald Sphere Viewer**](https://nitad54448.github.io/Enseignement/ewald.html): This simulator visualizes the construction of the Ewald sphere in reciprocal space. (Language: JS)
 * [**🔬 Diffraction Methods**](https://nitad54448.github.io/Enseignement/DiffractionMethods.html): This software visualizes the reciprocal lattice for three different experimental diffraction methods. (Language: JS)
 * [**🖥️ Single Crystal Diffraction**](4-circles.html): An advanced simulator for visualizing single-crystal X-ray diffraction patterns. (Language: JS)
