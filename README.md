@@ -4,7 +4,7 @@
 
 * **Author:** NitaD, Université Paris-Saclay
 * **Versions:** 2007-2025
-* **Last Updated:** July 14, 2025
+* **Last Updated:** July 23, 2025
 
 ---
 
@@ -65,6 +65,7 @@
 
 ## Design of Experiments
 
+* [**General Purpose DOE Tool**](doe.html): A versatile web app for designing and analyzing experiments using various models (Factorial, RSM, Taguchi). ([Help File](doe_help.html)) (Language: JS)
 * [**SPS Control**](https://nitad54448.github.io/sps/): Interactive web app for a Spark Plasma Sintering system. ([Repo](https://github.com/nitad54448/sps)) (Language: JS)
 * [**PVD Control**](https://nitad54448.github.io/pvd/): Web-based interface for a Physical Vapor Deposition system. ([Repo](https://github.com/nitad54448/pvd)) (Language: JS)
 * [**CVD Control**](https://nitad54448.github.io/cvd/): Web application for a Chemical Vapor Deposition system. ([Repo](https://github.com/nitad54448/cvd)) (Language: JS)
