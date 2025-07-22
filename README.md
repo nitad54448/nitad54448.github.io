@@ -68,7 +68,7 @@
 * [**SPS Control**](https://nitad54448.github.io/sps/): Interactive web app for a Spark Plasma Sintering system. ([Repository](https://github.com/nitad54448/sps)) (Language: JS)
 * [**PVD Control**](https://nitad54448.github.io/pvd/): Web-based interface for a Physical Vapor Deposition system. ([Repository](https://github.com/nitad54448/pvd)) (Language: JS)
 * [**CVD Control**](https://nitad54448.github.io/cvd/): Web application for a Chemical Vapor Deposition system. ([Repository](https://github.com/nitad54448/cvd)) (Language: JS)
-* [**General Purpose DOE Tool**](https://nitad54448.github.io/DOE/): A versatile web app for designing and analyzing experiments using various models (Factorial, RSM, Taguchi). ([Repository]((https://github.com/nitad54448/DOE))) (Language: JS)
+* [**General Purpose DOE Tool**](https://nitad54448.github.io/DOE/): A versatile web app for designing and analyzing experiments using various models (Factorial, RSM, Taguchi). ([Repository](https://github.com/nitad54448/DOE))) (Language: JS)
 ---
 
 ## Others
