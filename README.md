@@ -16,23 +16,23 @@
 
 ## Teaching Simulations
 
-* [**🌊 WaveXplorer**](https://nitad54448.github.io/Enseignement/WaveXplorer.html): A versatile tool for visualizing and understanding various fundamental concepts of waves. (Language: JS)
-* [**🎯 Wave Scattering**](https://nitad54448.github.io/Enseignement/WaveScattering.html): An interactive simulation of a wave scattering off a charged particle (Thomson scattering). (Language: JS)
-* [**💎 Miller Planes Viewer**](https://nitad54448.github.io/Enseignement/Miller.html): Visualize (hkl) crystallographic planes. (Language: JS)
-* [**↔️ Direction Visualizer**](https://nitad54448.github.io/Enseignement/Directions.html): Visualize [uvw] crystallographic directions within a unit cell for all crystal systems. (Language: JS)
-* [**🌐 Reciprocal Space Viewer**](https://nitad54448.github.io/Enseignement/RSpace.html): This tool allows for the visualization of a reciprocal lattice for all crystal systems. (Language: JS)
-* [**⚛️ Atomic Energy Levels**](https://nitad54448.github.io/Enseignement/niveaux_atomiques.html): This viewer schematically displays atomic energy levels (K, L, M) for different elements. (Language: JS)
-* [**📈 XRD Emission Spectra**](https://nitad54448.github.io/Enseignement/Emission.html): This simulator generates and displays X-ray emission spectra. (Language: JS)
-* [**📊 XRD Absorption & Filters**](https://nitad54448.github.io/Enseignement/filtres.html): This tool simulates the X-ray emission from an anode and the effect of a filter. (Language: JS)
-* [**⚙️ XRD Monochromators**](https://nitad54448.github.io/Enseignement/monochromateur.html): Simulates the effect of a single crystal monochromator on an X-ray spectrum, including mosaicity and higher orders. (Language: JS)
-* [**🌍 Ewald Sphere Viewer**](https://nitad54448.github.io/Enseignement/ewald.html): This simulator visualizes the construction of the Ewald sphere in reciprocal space. (Language: JS)
-* [**🔬 Diffraction Methods**](https://nitad54448.github.io/Enseignement/DiffractionMethods.html): This software visualizes the reciprocal lattice for three different experimental diffraction methods. (Language: JS)
-* [**🖥️ Single Crystal Diffraction**](4-circles.html): An advanced simulator for visualizing single-crystal X-ray diffraction patterns. (Language: JS)
-* [**🎞️ Kiessig Fringes**](https://nitad54448.github.io/Enseignement/kiessig.html): This simulator interactively demonstrates X-ray Reflectivity (XRR) for a single film. (Language: JS)
-* [**✨ 2D Fourier Transform**](https://nitad54448.github.io/Enseignement/FT.html): This explorer visualizes the 2D Fourier Transform of various sources. (Language: JS)
-* [**🔄 2D Radon Transform**](https://nitad54448.github.io/Enseignement/Radon.html): This tool computes and displays the 2D Radon Transform (Sinogram) of an image. (Language: JS)
-* [**🎨 Color Radon Transform**](https://nitad54448.github.io/Enseignement/ColorRadon.html): An explorer for the 2D Radon Transform on color images, demonstrating filtered back-projection. (Language: JS)
-* [**🧊 3D Radon Transform**](3D_Radon_-_DS.html): A 3D explorer for computed tomography, showing the reconstruction of a 3D object from its 2D slices. (Language: JS)
+* [** WaveXplorer**](https://nitad54448.github.io/Enseignement/WaveXplorer.html): A versatile tool for visualizing and understanding various fundamental concepts of waves. (Language: JS)
+* [** Wave Scattering**](https://nitad54448.github.io/Enseignement/WaveScattering.html): An interactive simulation of a wave scattering off a charged particle (Thomson scattering). (Language: JS)
+* [** Miller Planes Viewer**](https://nitad54448.github.io/Enseignement/Miller.html): Visualize (hkl) crystallographic planes. (Language: JS)
+* [** Direction Visualizer**](https://nitad54448.github.io/Enseignement/Directions.html): Visualize [uvw] crystallographic directions within a unit cell for all crystal systems. (Language: JS)
+* [** Reciprocal Space Viewer**](https://nitad54448.github.io/Enseignement/RSpace.html): This tool allows for the visualization of a reciprocal lattice for all crystal systems. (Language: JS)
+* [** Atomic Energy Levels**](https://nitad54448.github.io/Enseignement/niveaux_atomiques.html): This viewer schematically displays atomic energy levels (K, L, M) for different elements. (Language: JS)
+* [** XRD Emission Spectra**](https://nitad54448.github.io/Enseignement/Emission.html): This simulator generates and displays X-ray emission spectra. (Language: JS)
+* [** XRD Absorption & Filters**](https://nitad54448.github.io/Enseignement/filtres.html): This tool simulates the X-ray emission from an anode and the effect of a filter. (Language: JS)
+* [** XRD Monochromators**](https://nitad54448.github.io/Enseignement/monochromateur.html): Simulates the effect of a single crystal monochromator on an X-ray spectrum, including mosaicity and higher orders. (Language: JS)
+* [** Ewald Sphere Viewer**](https://nitad54448.github.io/Enseignement/ewald.html): This simulator visualizes the construction of the Ewald sphere in reciprocal space. (Language: JS)
+* [** Diffraction Methods**](https://nitad54448.github.io/Enseignement/DiffractionMethods.html): This software visualizes the reciprocal lattice for three different experimental diffraction methods. (Language: JS)
+* [** Single Crystal Diffraction**](4-circles.html): An advanced simulator for visualizing single-crystal X-ray diffraction patterns. (Language: JS)
+* [** Kiessig Fringes**](https://nitad54448.github.io/Enseignement/kiessig.html): This simulator interactively demonstrates X-ray Reflectivity (XRR) for a single film. (Language: JS)
+* [** 2D Fourier Transform**](https://nitad54448.github.io/Enseignement/FT.html): This explorer visualizes the 2D Fourier Transform of various sources. (Language: JS)
+* [** 2D Radon Transform**](https://nitad54448.github.io/Enseignement/Radon.html): This tool computes and displays the 2D Radon Transform (Sinogram) of an image. (Language: JS)
+* [** Color Radon Transform**](https://nitad54448.github.io/Enseignement/ColorRadon.html): An explorer for the 2D Radon Transform on color images, demonstrating filtered back-projection. (Language: JS)
+* [** 3D Radon Transform**](3D_Radon_-_DS.html): A 3D explorer for computed tomography, showing the reconstruction of a 3D object from its 2D slices. (Language: JS)
 
 ---
 
@@ -65,11 +65,10 @@
 
 ## Design of Experiments
 
-* [**General Purpose DOE Tool**](doe.html): A versatile web app for designing and analyzing experiments using various models (Factorial, RSM, Taguchi). ([Help File](doe_help.html)) (Language: JS)
-* [**SPS Control**](https://nitad54448.github.io/sps/): Interactive web app for a Spark Plasma Sintering system. ([Repo](https://github.com/nitad54448/sps)) (Language: JS)
-* [**PVD Control**](https://nitad54448.github.io/pvd/): Web-based interface for a Physical Vapor Deposition system. ([Repo](https://github.com/nitad54448/pvd)) (Language: JS)
-* [**CVD Control**](https://nitad54448.github.io/cvd/): Web application for a Chemical Vapor Deposition system. ([Repo](https://github.com/nitad54448/cvd)) (Language: JS)
-
+* [**SPS Control**](https://nitad54448.github.io/sps/): Interactive web app for a Spark Plasma Sintering system. ([Repository](https://github.com/nitad54448/sps)) (Language: JS)
+* [**PVD Control**](https://nitad54448.github.io/pvd/): Web-based interface for a Physical Vapor Deposition system. ([Repository](https://github.com/nitad54448/pvd)) (Language: JS)
+* [**CVD Control**](https://nitad54448.github.io/cvd/): Web application for a Chemical Vapor Deposition system. ([Repository](https://github.com/nitad54448/cvd)) (Language: JS)
+* [**General Purpose DOE Tool**](https://nitad54448.github.io/DOE/): A versatile web app for designing and analyzing experiments using various models (Factorial, RSM, Taguchi). ([Repository]((https://github.com/nitad54448/DOE))) (Language: JS)
 ---
 
 ## Others
