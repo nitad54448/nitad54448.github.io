@@ -4,7 +4,7 @@
 
 * **Author:** NitaD, Université Paris-Saclay
 * **Versions:** 2007-2025
-* **Last Updated:** July 25, 2025
+* **Last Updated:** July 28, 2025
 
 ---
 
@@ -32,8 +32,8 @@
 
 ## Scientific Calculations
 
-* [**yappari-5-1**](https://github.com/nitad54448/yappari-5-1): A comprehensive Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, DRT analysis, Hilbert transform (Z-Hit) calculations, and more. (Language: LabVIEW)
-* [**Calculate 3-omega**](https://nitad54448.github.io/calc_3omega/): Calculates thermal conductivity and diffusivity from 3-omega experiments. ([Repository](https://github.com/nitad54448/calc_3omega)) (Language: JavaScript)
+* [**Yappari**](https://github.com/nitad54448/yappari-5-1): A Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, DRT analysis, Hilbert transform (Z-Hit) calculations, and more. (Language: LabVIEW)
+* [**3-omega 2D fit**](https://nitad54448.github.io/calc_3omega/): Calculates thermal conductivity and diffusivity from 3-omega experiments. Requires a specific format datafile, see the repository for details. ([Repository](https://github.com/nitad54448/calc_3omega)) (Language: JavaScript)
 * [**Simulate 3-omega**](https://nitad54448.github.io/sim_3omega/): Simulates harmonic signals for the 3 omega thermal conductivity experiments. ([Repository](https://github.com/nitad54448/sim_3omega)) (Language: JavaScript)
 * [**Seebeck Calculator**](https://github.com/nitad54448/calculate_Seebeck): Calculates absolute Seebeck coefficient for thermoelectric legs. (Language: LabVIEW)
 * [**Van der Pauw Calculator**](https://github.com/nitad54448/van_der_Pauw_Labview): Calculates resistivity from van der Pauw method measurements. (Language: LabVIEW)
@@ -44,6 +44,7 @@
 
 ## LabVIEW Tools & Drivers
 
+* [**MFLI_SM**](https://github.com/nitad54448/MFLI_SM): A Labview State Machine for the control of the Zurich Instruments MFLI lock-in amplifier. (Language: LabVIEW)
 * [**FG_save**](https://github.com/nitad54448/FG_save): A Functional Global utility to save data to ASCII files. (Language: LabVIEW)
 * [**Report Generator**](https://github.com/nitad54448/create_report): Generate reports from a Tab control in the user interface. (Language: LabVIEW)
 * [**Splash**](https://github.com/nitad54448/splash): Animated GIF splash window for LabVIEW programs. (Language: LabVIEW)
@@ -66,6 +67,10 @@
 
 ## Others
 
+* [**Radio is not dead**](https://nitad54448.github.io/radio/): Listen to some radios. ([Repository](https://github.com/nitad54448/radio)) (Language: JavaScript)
+* [**Local meteo**](https://nitad54448.github.io/meteo/): Local weather forecast. ([Repository](https://github.com/nitad54448/meteo)) (Language: JavaScript)
+* [**Convert file 3-omega**](https://nitad54448.github.io/convert_3omega/): Converts simulated datafile to be readable by calc_3omega. ([Repository](https://github.com/nitad54448/convert_3omega)) (Language: JavaScript)
+* [**Kaprekar's Constant**](https://nitad54448.github.io/kaprekar/): An interactive web app that illustrates the Kaprekar's constant. ([Repository](https://github.com/nitad54448/kaprekar)) (Language: JavaScript)
 * [**Fibonacci**](https://github.com/nitad54448/Fibonacci): A LabVIEW project to compute and visualize the Fibonacci sequence. (Language: LabVIEW)
 * [**powder4_source**](https://github.com/nitad54448/powder4_source): An old utility for converting files and other powder X-ray diffraction analysis. (Language: Visual Basic, Fortran)
 * [**Versatile**](https://github.com/nitad54448/Versatile): A computer program for calculating non-isothermal kinetic parameters. (Language: Visual Basic)
@@ -78,3 +83,4 @@
 * [Google Scholar](https://scholar.google.com/citations?user=6S5F9fMAAAAJ&hl=fr)
 * [ORCID](https://orcid.org/0000-0002-5142-9021)
 * [ResearchGate](https://www.researchgate.net/profile/Nita-Dragoe)
+* [Github](https://github.com/nitad54448)
