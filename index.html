@@ -408,7 +408,7 @@
     </script>
 
 <script>
-        // This is the public NAME of your counter, NOT the secret API Token from your screenshot.
+        // Use a simple, memorable name for your key.
         const KEY = 'pageviews'; 
         const NAMESPACE = 'nitad54448.github.io';
         const COUNT_URL = 'https://api.counterapi.dev/v1';
@@ -417,9 +417,9 @@
 
         const getCount = async () => {
             try {
-                // CORRECTED URL STRUCTURE: /NAMESPACE/KEY/get
                 const response = await fetch(`${COUNT_URL}/${NAMESPACE}/${KEY}/get`);
                 const data = await response.json();
+                // The API returns a 'count' property
                 if (data.count !== null) {
                   setValue(data.count);
                 }
@@ -431,9 +431,9 @@
 
         const incrementCount = async () => {
             try {
-                // CORRECTED URL STRUCTURE: /NAMESPACE/KEY/up
                 const response = await fetch(`${COUNT_URL}/${NAMESPACE}/${KEY}/up`);
                 const data = await response.json();
+                 // The API returns a 'count' property
                  if (data.count !== null) {
                   setValue(data.count);
                 }
@@ -449,6 +449,8 @@
             }
         };
 
+        // --- THIS IS THE PART THAT NEEDED FIXING ---
+        // It must check for "hasVisitedCounterDev" to work with the new service
         if (localStorage.getItem("hasVisitedCounterDev") === null) {
             incrementCount();
             localStorage.setItem("hasVisitedCounterDev", "true"); 
