@@ -407,8 +407,9 @@
         });
     </script>
 
-    <script>
-        const KEY = 'ut_1RJ7TEf7p4mjpgSYzJiN7CCMecJ79S7lG3lUIMl3';
+<script>
+        // This is the public NAME of your counter, NOT the secret API Token from your screenshot.
+        const KEY = 'pageviews'; 
         const NAMESPACE = 'nitad54448.github.io';
         const COUNT_URL = 'https://api.counterapi.dev/v1';
 
@@ -416,10 +417,11 @@
 
         const getCount = async () => {
             try {
-                const response = await fetch(`${COUNT_URL}/get/${NAMESPACE}/${KEY}`);
+                // CORRECTED URL STRUCTURE: /NAMESPACE/KEY/get
+                const response = await fetch(`${COUNT_URL}/${NAMESPACE}/${KEY}/get`);
                 const data = await response.json();
-                if (data.value !== null) {
-                  setValue(data.value);
+                if (data.count !== null) {
+                  setValue(data.count);
                 }
             } catch (err) {
                 console.error("Could not fetch count:", err);
@@ -429,16 +431,31 @@
 
         const incrementCount = async () => {
             try {
-                const response = await fetch(`${COUNT_URL}/hit/${NAMESPACE}/${KEY}`);
+                // CORRECTED URL STRUCTURE: /NAMESPACE/KEY/up
+                const response = await fetch(`${COUNT_URL}/${NAMESPACE}/${KEY}/up`);
                 const data = await response.json();
-                 if (data.value !== null) {
-                  setValue(data.value);
+                 if (data.count !== null) {
+                  setValue(data.count);
                 }
             } catch (err) {
                 console.error("Could not increment count:", err);
                  if(counter) counter.innerText = "Visitor count unavailable.";
             }
         };
+
+        const setValue = (num) => {
+            if(counter) {
+              counter.innerText = `Total Unique Visitors: ${num}`;
+            }
+        };
+
+        if (localStorage.getItem("hasVisitedCounterDev") === null) {
+            incrementCount();
+            localStorage.setItem("hasVisitedCounterDev", "true"); 
+        } else {
+            getCount();
+        }
+    </script>
 
         const setValue = (num) => {
             if(counter) {
