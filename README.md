@@ -8,6 +8,18 @@
 
 ---
 
+## Scientific Calculations
+
+* [**Yappari**](https://github.com/nitad54448/yappari-5-1): A Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, DRT analysis, Hilbert transform (Z-Hit) calculations, and more. (Language: LabVIEW)
+* [**3-omega 2D fit**](https://nitad54448.github.io/calc_3omega/): Calculates thermal conductivity and diffusivity from 3-omega experiments. Requires a specific format datafile, see the repository for details. ([Repository](https://github.com/nitad54448/calc_3omega)) (Language: JavaScript)
+* [**Simulate 3-omega**](https://nitad54448.github.io/sim_3omega/): Simulates harmonic signals for the 3 omega thermal conductivity experiments. ([Repository](https://github.com/nitad54448/sim_3omega)) (Language: JavaScript)
+* [**Seebeck Calculator**](https://github.com/nitad54448/calculate_Seebeck): Calculates absolute Seebeck coefficient for thermoelectric legs. (Language: LabVIEW)
+* [**Van der Pauw Calculator**](https://github.com/nitad54448/van_der_Pauw_Labview): Calculates resistivity from van der Pauw method measurements. (Language: LabVIEW)
+* [**High Pressure Calculator**](https://github.com/nitad54448/high_pressure_Ruby): Calculates pressure from ruby fluorescence line shift. (Language: LabVIEW)
+* [**Programmable Resistor**](https://github.com/nitad54448/programmable_Resistor): Design and simulate a programmable resistor for automated testing. (Language: LabVIEW)
+
+---
+
 ## Teaching Simulations
 
 * [**WaveXplorer**](https://nitad54448.github.io/Enseignement/WaveXplorer.html): Visualizing fundamental concepts of waves. (Language: JavaScript)
@@ -27,18 +39,6 @@
 * [**Color Radon Transform**](https://nitad54448.github.io/Enseignement/ColorRadon.html): Explorer for the 2D Radon Transform on color images. (Language: JavaScript)
 * [**3D Radon Transform**](https://nitad54448.github.io/Enseignement/3D_Radon.html): A 3D explorer for computed tomography. (Language: JavaScript)
 * [**2D Hough Transform**](https://nitad54448.github.io/Enseignement/Hough.html): An interactive explorer for line detection in images. (Language: JavaScript)
-
----
-
-## Scientific Calculations
-
-* [**Yappari**](https://github.com/nitad54448/yappari-5-1): A Windows application for impedance spectroscopy analysis. Features include non-linear parametric fitting, DRT analysis, Hilbert transform (Z-Hit) calculations, and more. (Language: LabVIEW)
-* [**3-omega 2D fit**](https://nitad54448.github.io/calc_3omega/): Calculates thermal conductivity and diffusivity from 3-omega experiments. Requires a specific format datafile, see the repository for details. ([Repository](https://github.com/nitad54448/calc_3omega)) (Language: JavaScript)
-* [**Simulate 3-omega**](https://nitad54448.github.io/sim_3omega/): Simulates harmonic signals for the 3 omega thermal conductivity experiments. ([Repository](https://github.com/nitad54448/sim_3omega)) (Language: JavaScript)
-* [**Seebeck Calculator**](https://github.com/nitad54448/calculate_Seebeck): Calculates absolute Seebeck coefficient for thermoelectric legs. (Language: LabVIEW)
-* [**Van der Pauw Calculator**](https://github.com/nitad54448/van_der_Pauw_Labview): Calculates resistivity from van der Pauw method measurements. (Language: LabVIEW)
-* [**High Pressure Calculator**](https://github.com/nitad54448/high_pressure_Ruby): Calculates pressure from ruby fluorescence line shift. (Language: LabVIEW)
-* [**Programmable Resistor**](https://github.com/nitad54448/programmable_Resistor): Design and simulate a programmable resistor for automated testing. (Language: LabVIEW)
 
 ---
 
@@ -65,14 +65,29 @@
 
 ---
 
-## Others
+## Maths
 
+* [**Fibonacci**](https://github.com/nitad54448/Fibonacci): A LabVIEW project to compute and visualize the Fibonacci sequence. (Language: LabVIEW)
+* [**Collatz Conjecture**](https://nitad54448.github.io/Collatz/): An interactive visualization of the Collatz conjecture. ([Repository](https://github.com/nitad54448/collatz)) (Language: JavaScript)
+* [**Conway's Game of Life**](https://nitad54448.github.io/Conway/): A simulation of Conway's Game of Life, a cellular automaton. ([Repository](https://github.com/nitad54448/conway)) (Language: JavaScript)
+* [**Kaprekar's Constant**](https://nitad54448.github.io/kaprekar/): An interactive web app that illustrates the Kaprekar's constant. ([Repository](https://github.com/nitad54448/kaprekar)) (Language: JavaScript)
+
+---
+
+## Fun
+
+* [**NASA APOD**](https://nitad54448.github.io/apod/): Displays NASA's Astronomy Picture of the Day. ([Repository](https://github.com/nitad54448/apod)) (Language: JavaScript)
 * [**Radio is not dead**](https://nitad54448.github.io/radio/): Listen to some radios. ([Repository](https://github.com/nitad54448/radio)) (Language: JavaScript)
 * [**Local meteo**](https://nitad54448.github.io/meteo/): Local weather forecast. ([Repository](https://github.com/nitad54448/meteo)) (Language: JavaScript)
+* [**Useless facts**](https://nitad54448.github.io/facts/): Displays useless facts.. ([Repository](https://github.com/nitad54448/facts)) (Language: JavaScript)
 * [**Random xkcd Comic**](https://nitad54448.github.io/random_xkcd/): Displays a random xkcd comic. ([Repository](https://github.com/nitad54448/random_xkcd)) (Language: JavaScript)
+* [**Snake Game**](https://nitad54448.github.io/snake/): A classic snake game. ([Repository](https://github.com/nitad54448/snake)) (Language: JavaScript)
+
+---
+
+## Others
+
 * [**Convert file 3-omega**](https://nitad54448.github.io/convert_3omega/): Converts simulated datafile to be readable by calc_3omega. ([Repository](https://github.com/nitad54448/convert_3omega)) (Language: JavaScript)
-* [**Kaprekar's Constant**](https://nitad54448.github.io/kaprekar/): An interactive web app that illustrates the Kaprekar's constant. ([Repository](https://github.com/nitad54448/kaprekar)) (Language: JavaScript)
-* [**Fibonacci**](https://github.com/nitad54448/Fibonacci): A LabVIEW project to compute and visualize the Fibonacci sequence. (Language: LabVIEW)
 * [**powder4_source**](https://github.com/nitad54448/powder4_source): An old utility for converting files and other powder X-ray diffraction analysis. (Language: Visual Basic, Fortran)
 * [**Versatile**](https://github.com/nitad54448/Versatile): A computer program for calculating non-isothermal kinetic parameters. (Language: Visual Basic)
 
