@@ -69,6 +69,7 @@
 
 * [**Radio is not dead**](https://nitad54448.github.io/radio/): Listen to some radios. ([Repository](https://github.com/nitad54448/radio)) (Language: JavaScript)
 * [**Local meteo**](https://nitad54448.github.io/meteo/): Local weather forecast. ([Repository](https://github.com/nitad54448/meteo)) (Language: JavaScript)
+* [**Random xkcd Comic**](https://nitad54448.github.io/random_xkcd/): Displays a random xkcd comic. ([Repository](https://github.com/nitad54448/random_xkcd)) (Language: JavaScript)
 * [**Convert file 3-omega**](https://nitad54448.github.io/convert_3omega/): Converts simulated datafile to be readable by calc_3omega. ([Repository](https://github.com/nitad54448/convert_3omega)) (Language: JavaScript)
 * [**Kaprekar's Constant**](https://nitad54448.github.io/kaprekar/): An interactive web app that illustrates the Kaprekar's constant. ([Repository](https://github.com/nitad54448/kaprekar)) (Language: JavaScript)
 * [**Fibonacci**](https://github.com/nitad54448/Fibonacci): A LabVIEW project to compute and visualize the Fibonacci sequence. (Language: LabVIEW)
