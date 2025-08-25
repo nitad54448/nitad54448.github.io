@@ -1,0 +1,23 @@
+{
+  "name": "apod",
+  "version": "1.0.0",
+  "description": "NASA picture of the day",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitad54448/apod.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nitad54448/apod/issues"
+  },
+  "homepage": "https://github.com/nitad54448/apod#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
