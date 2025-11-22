@@ -502,7 +502,7 @@
 </section>
 
 <footer class="text-center mt-12 pb-8">
-<p class="text-gray-600">Last updated on November 22, 2025.<br>Except where otherwise indicated, all programs on this site are licensed under the
+<p class="text-lg text-gray-400">Last updated on November 22, 2025.<br>Except where otherwise indicated, all programs on this site are licensed under the
   <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license" target="_blank" noopener noreferrer>
     CC BY-NC-ND License
   </a>.
@@ -523,10 +523,76 @@ class="flex flex-col items-center text-gray-500 hover:text-[#6e5494] transition-
 
 </div>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // --- Accordion Logic ---
-        // This handles both the main category accordions and the nested sub-accordions
+        
+        // --- 1. Dynamic "View Repo" Link Injection ---
+        const linkItems = document.querySelectorAll('.link-item');
+        
+        linkItems.forEach(item => {
+            // A. Clickable Panel Logic
+            item.addEventListener('click', function(event) {
+                if (event.target.closest('a')) return;
+                const mainLink = item.querySelector('h3 a');
+                if (mainLink && mainLink.href) {
+                    window.open(mainLink.href, '_blank', 'noopener noreferrer');
+                }
+            });
+
+            // B. "View Repo" Logic
+            const mainAnchor = item.querySelector('h3 a');
+            if (mainAnchor) {
+                const url = mainAnchor.href;
+                const footerDiv = item.querySelector('.mt-3');
+
+                if (url.includes('nitad54448.github.io') && !url.includes('github.com')) {
+                    const urlParts = new URL(url);
+                    const pathSegments = urlParts.pathname.split('/').filter(p => p.length > 0);
+                    
+                    if (pathSegments.length > 0) {
+                        const repoName = pathSegments[0];
+                        const repoUrl = `https://github.com/nitad54448/${repoName}`;
+
+                        const existingLinks = footerDiv.querySelectorAll('a');
+                        let hasRepoLink = false;
+                        existingLinks.forEach(link => {
+                            if (link.textContent.trim() === 'View Repo') hasRepoLink = true;
+                        });
+
+                        if (!hasRepoLink) {
+                            const viewRepoLink = document.createElement('a');
+                            viewRepoLink.href = repoUrl;
+                            viewRepoLink.target = '_blank';
+                            // Matches the header link style (teal hover)
+                            viewRepoLink.className = 'text-sm text-gray-400 hover:text-teal-300 transition-colors duration-200';
+                            viewRepoLink.textContent = 'View Repo';
+
+                            if (!footerDiv.classList.contains('flex')) {
+                                footerDiv.classList.add('flex', 'justify-between', 'items-center');
+                            } else if (!footerDiv.classList.contains('justify-between')) {
+                                footerDiv.classList.add('justify-between');
+                            }
+                            footerDiv.appendChild(viewRepoLink);
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- 2. Application Counter (UPDATED SELECTOR) ---
+        const appCount = linkItems.length;
+        // We changed the specific class, so we now select just 'footer p' to be safe
+        const footerPara = document.querySelector('footer p');
+        
+        if (footerPara) {
+            footerPara.innerHTML = footerPara.innerHTML.replace(
+                '2025.<br>', 
+                `2025. There are <span>${appCount}</span> applications on this site.<br>`
+            );
+        }
+
+        // --- 3. Accordion Logic ---
         const accordionButtons = document.querySelectorAll('.accordion-header-button');
         accordionButtons.forEach(button => {
             button.addEventListener('click', function () {
@@ -545,36 +611,18 @@ class="flex flex-col items-center text-gray-500 hover:text-[#6e5494] transition-
             });
         });
 
-        // --- Clickable Panel Logic ---
-        // Allows the entire card to be clickable, while respecting the specific anchor tag
-        const linkItems = document.querySelectorAll('.link-item');
-        linkItems.forEach(item => {
-            item.addEventListener('click', function(event) {
-                if (event.target.closest('a')) {
-                    return;
-                }
-                const mainLink = item.querySelector('h3 a');
-                if (mainLink && mainLink.href) {
-                    window.open(mainLink.href, '_blank', 'noopener noreferrer');
-                }
-            });
-        });
-
-        // --- Search and Filter Logic (Maintains July 2025 logic) ---
+        // --- 4. Search and Filter Logic ---
         const searchInput = document.getElementById('search-input');
         const filterBtnContainer = document.getElementById('filter-buttons');
-        const allLinkItems = document.querySelectorAll('.link-item');
         const accordionItems = document.querySelectorAll('.accordion-item');
-
         let currentFilter = 'all';
 
         function filterAndSearch() {
             const searchTerm = searchInput.value.toLowerCase();
 
-            allLinkItems.forEach(item => {
+            linkItems.forEach(item => {
                 const itemText = item.textContent.toLowerCase();
                 const itemTags = item.dataset.tags || '';
-
                 const searchMatch = itemText.includes(searchTerm);
                 const filterMatch = currentFilter === 'all' || itemTags.includes(currentFilter);
 
@@ -585,26 +633,19 @@ class="flex flex-col items-center text-gray-500 hover:text-[#6e5494] transition-
                 }
             });
 
-            // --- Auto-toggle accordions based on visible content ---
             accordionItems.forEach(accordion => {
                 const content = accordion.querySelector('.accordion-content');
                 const button = accordion.querySelector('.accordion-header-button');
-                
-                // Count how many link items are visible inside this specific accordion
                 const visibleItems = content.querySelectorAll('.link-item[style*="display: flex"]');
 
                 if (visibleItems.length > 0 && (searchTerm || currentFilter !== 'all')) {
-                    // If there are visible items due to a search/filter, ensure the accordion is open
                     if (!content.classList.contains('active')) {
                         content.classList.add('active');
                         button.classList.add('active');
                         button.setAttribute('aria-expanded', 'true');
                     }
                 } else if (visibleItems.length === 0 && (searchTerm || currentFilter !== 'all')) {
-                    // If a filter/search results in no visible items, ensure the accordion is closed
-                    // But only if this accordion is NOT a parent of other accordions (to prevent closing the main category when only one sub-category is empty)
                     const hasNestedAccordions = content.querySelector('.accordion-item');
-                    
                     if (content.classList.contains('active') && !hasNestedAccordions) {
                         content.classList.remove('active');
                         button.classList.remove('active');
@@ -614,30 +655,26 @@ class="flex flex-col items-center text-gray-500 hover:text-[#6e5494] transition-
             });
         }
 
-        // Event listener for the search input
         searchInput.addEventListener('input', filterAndSearch);
 
-        // Event listener for filter buttons
         filterBtnContainer.addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON') {
                 const clickedFilter = e.target.dataset.filter;
-
                 if (e.target.classList.contains('active')) {
                     e.target.classList.remove('active');
                     currentFilter = 'all';
                 } else {
                     const currentActive = filterBtnContainer.querySelector('.active');
-                    if (currentActive) {
-                        currentActive.classList.remove('active');
-                    }
+                    if (currentActive) currentActive.classList.remove('active');
                     e.target.classList.add('active');
                     currentFilter = clickedFilter;
                 }
-                
                 filterAndSearch();
             }
         });
     });
 </script>
+
+
 </body>
 </html>
