@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/nitad54448/apod#readme",
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.1.17"
   }
 }
