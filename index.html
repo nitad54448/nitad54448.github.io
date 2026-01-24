@@ -604,15 +604,17 @@ class="flex flex-col items-center text-gray-500 hover:text-[#6e5494] transition-
             }
         });
 
-        // --- 2. Application Counter (UPDATED SELECTOR) ---
+        // --- 2. Application Counter / changement pour que ça ne dépend pas de la l'année 
         const appCount = linkItems.length;
         // We changed the specific class, so we now select just 'footer p' to be safe
         const footerPara = document.querySelector('footer p');
         
+
         if (footerPara) {
+            // regex matches any 4 digits followed by a dot and a break tag
             footerPara.innerHTML = footerPara.innerHTML.replace(
-                '2025.<br>', 
-                `2025. There are <span>${appCount}</span> applications on this site.<br>`
+                /(\d{4})\.<br>/, 
+                `$1. There are <span class="text-cyan-400 font-bold">${appCount}</span> applications on this site.<br>`
             );
         }
 
