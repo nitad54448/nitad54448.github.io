@@ -1,0 +1,834 @@
+[
+  {
+    "name": "Brutus",
+    "url": "https://nitad54448.github.io/brutus/brutus.html",
+    "description": "GPU-based powder diffraction indexing (exhaustive search).",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "IndexMan",
+    "url": "https://nitad54448.github.io/indexMan/IndexMan.html",
+    "description": "Generate HKL for any space group; manually index patterns.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "Powder 5",
+    "url": "https://nitad54448.github.io/powder5/powder5.html",
+    "description": "LeBail or Pawley extraction for X-ray/neutron patterns.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "Combs",
+    "url": "https://nitad54448.github.io/combs/combs.html",
+    "description": "Powder diffraction lattice indexing (combinatorial hkl search).",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "powder4_source",
+    "url": "https://github.com/nitad54448/powder4_source",
+    "description": "Legacy utility for converting, indexing, simulating, and analyzing powder data.",
+    "language": "VB / Fortran",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "Misfit-fit",
+    "url": "https://nitad54448.github.io/misfit/misfit.html",
+    "description": "Lattice parameter fit (LeBail) for modulated structures.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "Harko",
+    "url": "https://nitad54448.github.io/Patterson/Harko.html",
+    "description": "Analyze Harker planes in Patterson maps.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Analysis & Indexing"
+  },
+  {
+    "name": "Miller Planes",
+    "url": "https://nitad54448.github.io/Enseignement/Miller.html",
+    "description": "Visualize directions or crystallographic planes.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Stereographic",
+    "url": "https://nitad54448.github.io/Enseignement/stereo.html",
+    "description": "Visualize point symmetry operations with stereographic projections.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "2D Space groups",
+    "url": "https://nitad54448.github.io/Enseignement/2D_space_groups.html",
+    "description": "Symmetry and positions in the 2D space groups.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "2D patterns generator",
+    "url": "https://nitad54448.github.io/Enseignement/patterns.html",
+    "description": "Generates images based on the 17 space groups symmetry.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Symmetry",
+    "url": "https://nitad54448.github.io/Enseignement/point_symmetry.html",
+    "description": "Motifs and symmetry operations for the 32 point groups.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "3D Symmetry",
+    "url": "https://nitad54448.github.io/Enseignement/symmetry_tool.html",
+    "description": "Analyzes symmetry operations and translations in 3D.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Reciprocal Space Viewer",
+    "url": "https://nitad54448.github.io/Enseignement/RSpace.html",
+    "description": "Visualizes reciprocal lattice, distances, and Brillouin zones.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Ewald Sphere Viewer",
+    "url": "https://nitad54448.github.io/Enseignement/ewald.html",
+    "description": "Visualizes the Ewald sphere construction in reciprocal space.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Laue Diffraction",
+    "url": "https://nitad54448.github.io/Laue/Laue.html",
+    "description": "Simulator for single-crystal Laue diffraction.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Laue 2",
+    "url": "https://nitad54448.github.io/Laue/Laue_2.html",
+    "description": "Simulate Laue patterns and orient single crystals (experimental).",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "PDF Explorer",
+    "url": "https://nitad54448.github.io/Enseignement/pdf.html",
+    "description": "Interactive Pair Distribution Function g(d) for 2D arrangements.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Patterson function",
+    "url": "https://nitad54448.github.io/Patterson/Patterson.html",
+    "description": "Demonstrates structure, diffraction pattern, and Patterson function.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Single Crystal Diffraction",
+    "url": "https://nitad54448.github.io/Enseignement/4-circles.html",
+    "description": "Advanced simulator for 4-circle experiments.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Simple Cubic Powder XRD",
+    "url": "https://nitad54448.github.io/Enseignement/scpxrd.html",
+    "description": "Simulate the simple cubic powder X-ray diffraction.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "2D diffraction",
+    "url": "https://nitad54448.github.io/Enseignement/2D_diffraction.html",
+    "description": "Diffraction patterns of 2D structures.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Diffraction Methods",
+    "url": "https://nitad54448.github.io/Enseignement/DiffractionMethods.html",
+    "description": "Visualizes different experimental diffraction methods.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Kiessig Fringes",
+    "url": "https://nitad54448.github.io/Enseignement/kiessig.html",
+    "description": "X-ray Reflectivity for a single film on a substrate.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "X-ray reflectivity",
+    "url": "https://nitad54448.github.io/Enseignement/xrr.html",
+    "description": "Multi-layers X-ray Reflectivity (XRR) calculator.",
+    "language": "JavaScript",
+    "category": "Crystallography & Diffraction",
+    "subcategory": "Visualization & Simulation"
+  },
+  {
+    "name": "Seebeck Calculator",
+    "url": "https://github.com/nitad54448/calculate_Seebeck",
+    "description": "Calculates absolute Seebeck coefficient for thermoelectric legs.",
+    "language": "LabVIEW",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Thermal"
+  },
+  {
+    "name": "Online Seebeck Calculator",
+    "url": "https://nitad54448.github.io/Enseignement/seebeck.html",
+    "description": "Calculates thermoelectric power for common thermocouples.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Thermal"
+  },
+  {
+    "name": "3-omega 2D fit",
+    "url": "https://nitad54448.github.io/calc_3omega/",
+    "description": "Calculates thermal properties from 3-omega experiments (2D model).",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Thermal"
+  },
+  {
+    "name": "3-omega Linear fit",
+    "url": "https://nitad54448.github.io/calc_3omega/3omega_linear_fit.html",
+    "description": "Calculates thermal conductivity via linear fitting of 3rd harmonic.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Thermal"
+  },
+  {
+    "name": "Simulate 3-omega",
+    "url": "https://nitad54448.github.io/sim_3omega/",
+    "description": "Simulates harmonic signals for thermal conductivity experiments.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Thermal"
+  },
+  {
+    "name": "Versatile",
+    "url": "https://github.com/nitad54448/Versatile",
+    "description": "Legacy program for calculating non-isothermal kinetic parameters.",
+    "language": "Visual Basic",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Thermal"
+  },
+  {
+    "name": "HT-Halbach",
+    "url": "https://github.com/nitad54448/Halbach",
+    "description": "System for measuring Hall effect at high temperature (DC and AC).",
+    "language": "LabVIEW",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Electrical & Magnetic"
+  },
+  {
+    "name": "Calculate Hall signal",
+    "url": "https://nitad54448.github.io/Hall/",
+    "description": "Calculates Hall signals for various conditions.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Electrical & Magnetic"
+  },
+  {
+    "name": "Halbach array simulator",
+    "url": "https://nitad54448.github.io/Halbach_simulator/Halbach.html",
+    "description": "Simulates the magnetic field in some Halbach arrays built with discrete cyclindrical components.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Electrical & Magnetic"
+  },
+  {
+    "name": "Mandhala",
+    "url": "https://nitad54448.github.io/Halbach_simulator/Mandhala.html",
+    "description": "This is an exploration of the magnetic field (equivelent to k=2 in a Halbach setup) that can be obtained with some exotic distributions of dipoles (fullerene, Lebedev and Fibonacci).",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Electrical & Magnetic"
+  },
+  {
+    "name": "Van der Pauw Calculator",
+    "url": "https://github.com/nitad54448/van_der_Pauw_Labview",
+    "description": "Calculates resistivity from van der Pauw method measurements.",
+    "language": "LabVIEW",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Electrical & Magnetic"
+  },
+  {
+    "name": "Programmable Resistor",
+    "url": "https://github.com/nitad54448/programmable_Resistor",
+    "description": "Design and simulate a programmable resistor for automated testing.",
+    "language": "LabVIEW",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Electrical & Magnetic"
+  },
+  {
+    "name": "Fick's Laws",
+    "url": "https://nitad54448.github.io/Fick/diffusion_main.html",
+    "description": "Simulation of 1D diffusion processes and concentration profiles.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Diffusion"
+  },
+  {
+    "name": "Onsager's diffusion model",
+    "url": "https://nitad54448.github.io/Fick/onsager.html",
+    "description": "Simulation of 1D multi-component diffusion processes, fluxes and concentration profiles with the Onsager's model.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Diffusion"
+  },
+  {
+    "name": "ThermoMigrate",
+    "url": "https://nitad54448.github.io/Fick/ThermoMigrate.html",
+    "description": "Explore thermal migration in thermocouple legs.",
+    "language": "JavaScript",
+    "category": "Physical Properties & Transport",
+    "subcategory": "Diffusion"
+  },
+  {
+    "name": "Yappari",
+    "url": "https://github.com/nitad54448/yappari-5-1",
+    "description": "Impedance spectroscopy analysis (non-linear fitting, DRT, Z-Hit).",
+    "language": "LabVIEW",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "Sauerbrey",
+    "url": "https://nitad54448.github.io/Sauerbrey/sauerbrey.html",
+    "description": "Estimate deposition rates with QCM.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "Gap",
+    "url": "https://nitad54448.github.io/Tauc/gap.html",
+    "description": "Estimate bandgap with simple linearisation of Tauc plots.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "X-ray Emission Spectra",
+    "url": "https://nitad54448.github.io/Enseignement/Emission.html",
+    "description": "Generates and displays X-ray emission spectra.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "X-ray Absorption & Filters",
+    "url": "https://nitad54448.github.io/Enseignement/filtres.html",
+    "description": "Simulates the effect of a filter on an X-ray spectrum.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "X-ray Monochromators",
+    "url": "https://nitad54448.github.io/Enseignement/monochromateur.html",
+    "description": "Effect of a single crystal monochromator on an X-ray spectrum.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "EXAFS simulations",
+    "url": "https://nitad54448.github.io/Enseignement/exafs.html",
+    "description": "Simple EXAFS simulations for single paths on 2D structures.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "Atomic Energy Levels",
+    "url": "https://nitad54448.github.io/Enseignement/niveaux_atomiques.html",
+    "description": "Schematically displays atomic energy levels (K, L, M).",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "High Pressure Calculator",
+    "url": "https://github.com/nitad54448/high_pressure_Ruby",
+    "description": "Calculates pressure from ruby fluorescence line shift.",
+    "language": "LabVIEW",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Spectroscopy"
+  },
+  {
+    "name": "2D Radon Transform",
+    "url": "https://nitad54448.github.io/Enseignement/Radon.html",
+    "description": "Computes and displays the 2D Radon Transform (Sinogram).",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Imaging & Transforms"
+  },
+  {
+    "name": "Color Radon Transform",
+    "url": "https://nitad54448.github.io/Enseignement/ColorRadon.html",
+    "description": "Explorer for the 2D Radon Transform on color images.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Imaging & Transforms"
+  },
+  {
+    "name": "3D Radon Transform",
+    "url": "https://nitad54448.github.io/Enseignement/3D_Radon.html",
+    "description": "A 3D explorer for computed tomography.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Imaging & Transforms"
+  },
+  {
+    "name": "2D Hough Transform",
+    "url": "https://nitad54448.github.io/Enseignement/Hough.html",
+    "description": "An interactive explorer for line detection in images.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Imaging & Transforms"
+  },
+  {
+    "name": "Simple camera",
+    "url": "https://nitad54448.github.io/apod/camera.html",
+    "description": "Camera feed with flip, markers and scale.",
+    "language": "JavaScript",
+    "category": "Spectroscopy & Imaging",
+    "subcategory": "Imaging & Transforms"
+  },
+  {
+    "name": "SPS Control",
+    "url": "https://nitad54448.github.io/sps/",
+    "description": "Interactive web app for a Spark Plasma Sintering system.",
+    "language": "JavaScript",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Design of Experiments (DOE)"
+  },
+  {
+    "name": "PVD Control",
+    "url": "https://nitad54448.github.io/pvd/",
+    "description": "Interface for a Physical Vapor Deposition system.",
+    "language": "JavaScript",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Design of Experiments (DOE)"
+  },
+  {
+    "name": "CVD Control",
+    "url": "https://nitad54448.github.io/cvd/",
+    "description": "Web application for a Chemical Vapor Deposition system.",
+    "language": "JavaScript",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Design of Experiments (DOE)"
+  },
+  {
+    "name": "General Purpose DOE Tool",
+    "url": "https://nitad54448.github.io/DOE/",
+    "description": "Design and analyze experiments (Factorial, RSM, Taguchi).",
+    "language": "JavaScript",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Design of Experiments (DOE)"
+  },
+  {
+    "name": "MultiPass planner",
+    "url": "https://nitad54448.github.io/MCS/plan_MCS.html",
+    "description": "This program will design an experiment plan and prepare a JSON file with the settings selected by the user (Factorial, RSM, Taguchi). Used for an in house MultiPass program.",
+    "language": "JavaScript",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Design of Experiments (DOE)"
+  },
+  {
+    "name": "Optimum calculations",
+    "url": "https://nitad54448.github.io/MCS/analysis_MCS.html",
+    "description": "Calculate optimum experimental parameters by using the plan obtained from Multipass and experimental results.",
+    "language": "JavaScript",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Design of Experiments (DOE)"
+  },
+  {
+    "name": "Keithley622x Control",
+    "url": "https://github.com/nitad54448/Keithley622x_control_Labview",
+    "description": "Control a Keithley 6221 AC/DC current source.",
+    "language": "LabVIEW",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Hardware Drivers"
+  },
+  {
+    "name": "PPMS Control",
+    "url": "https://github.com/nitad54448/ppms_control",
+    "description": "VIs for controlling a Quantum Design PPMS via GPIB.",
+    "language": "LabVIEW",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Hardware Drivers"
+  },
+  {
+    "name": "QR10x LabVIEW Drivers",
+    "url": "https://github.com/nitad54448/QR10x_Labview_drivers",
+    "description": "Drivers for controlling QR-10x programmable resistors.",
+    "language": "LabVIEW",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Hardware Drivers"
+  },
+  {
+    "name": "MFLI_SM",
+    "url": "https://github.com/nitad54448/MFLI_SM",
+    "description": "State Machine for Zurich Instruments MFLI lock-in amplifier.",
+    "language": "LabVIEW",
+    "category": "Instrumentation & Process Control",
+    "subcategory": "Hardware Drivers"
+  },
+  {
+    "name": "2D Fourier Transform",
+    "url": "https://nitad54448.github.io/Enseignement/FT.html",
+    "description": "Visualizes the 2D Fourier Transform of various sources.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Signal Processing"
+  },
+  {
+    "name": "Fourier series",
+    "url": "https://nitad54448.github.io/fourier_series/",
+    "description": "Generate simple waves with Fourier.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Signal Processing"
+  },
+  {
+    "name": "Convolutions of functions",
+    "url": "https://nitad54448.github.io/Enseignement/Convolutions.html",
+    "description": "Demonstrates simple 1D and 2D convolution functions.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Signal Processing"
+  },
+  {
+    "name": "Lock-in Amplifier",
+    "url": "https://nitad54448.github.io/Enseignement/lia.html",
+    "description": "Simulate how a lock-in amplifier works.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Signal Processing"
+  },
+  {
+    "name": "WaveXplorer",
+    "url": "https://nitad54448.github.io/Enseignement/WaveXplorer.html",
+    "description": "Visualizing fundamental concepts of waves.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Signal Processing"
+  },
+  {
+    "name": "Light Interference",
+    "url": "https://nitad54448.github.io/Enseignement/interference.html",
+    "description": "A simple visualizing tool for interference of light.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Signal Processing"
+  },
+  {
+    "name": "Matrix",
+    "url": "https://nitad54448.github.io/matrix/index.html",
+    "description": "Simple matrix operations.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Trig_circle",
+    "url": "https://nitad54448.github.io/math/trig_circle.html",
+    "description": "Trigonometric circle visialization.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Prime numbers",
+    "url": "https://nitad54448.github.io/prime_numbers/",
+    "description": "Visualize Ulam spiral.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Eratosthene sieve",
+    "url": "https://nitad54448.github.io/math/eratosthenes.html",
+    "description": "Find prime numbers.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Perfect Numbers",
+    "url": "https://nitad54448.github.io/math/perfect.html",
+    "description": "Find perfect positive integers.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Buffon approximation",
+    "url": "https://nitad54448.github.io/math/buffon.html",
+    "description": "Estimate pi with needles.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Markov chains",
+    "url": "https://nitad54448.github.io/math/markov.html",
+    "description": "About dependent probabilities.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Monte Carlo",
+    "url": "https://nitad54448.github.io/math/monte_carlo.html",
+    "description": "More probabilities.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Pascal Triangles",
+    "url": "https://nitad54448.github.io/math/pascal.html",
+    "description": "Binomial expansions and combinatorics.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Fractals explorer",
+    "url": "https://nitad54448.github.io/fractal_explorer/",
+    "description": "Visualize some fractals.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Fibonacci spiral",
+    "url": "https://nitad54448.github.io/spiral/",
+    "description": "A visual demonstration of Fibonacci numbers.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Fibonacci (LabVIEW)",
+    "url": "https://github.com/nitad54448/Fibonacci",
+    "description": "Compute and visualize the Fibonacci sequence.",
+    "language": "LabVIEW",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Collatz Conjecture",
+    "url": "https://nitad54448.github.io/Collatz/",
+    "description": "Interactive visualization of the Collatz conjecture.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Conway's Game of Life",
+    "url": "https://nitad54448.github.io/Conway/",
+    "description": "A simulation of Conway's Game of Life.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Play with graphs",
+    "url": "https://nitad54448.github.io/graph_theory/",
+    "description": "Interactive web app looking for paths in graph theory.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "Kaprekar's Constant",
+    "url": "https://nitad54448.github.io/kaprekar/",
+    "description": "Interactive web app illustrating Kaprekar's constant.",
+    "language": "JavaScript",
+    "category": "Signal Processing & Mathematics",
+    "subcategory": "Pure Math & Probability"
+  },
+  {
+    "name": "FG_indicators",
+    "url": "https://github.com/nitad54448/FGV_indicators",
+    "description": "A Functional Global for reading and setting booleans. This avoids race conditions, contrary to Globals.",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "TDMS",
+    "url": "https://github.com/nitad54448/FG_tdms",
+    "description": "A simple Functional Global utility to save data to TDMS files; Labview 2023",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "FG_save",
+    "url": "https://github.com/nitad54448/FG_save",
+    "description": "A Functional Global utility to save data to ASCII files.",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "Report Generator",
+    "url": "https://github.com/nitad54448/create_report",
+    "description": "Generate reports from a Tab control in the user interface.",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "Splash",
+    "url": "https://github.com/nitad54448/splash",
+    "description": "Animated GIF splash window for LabVIEW programs.",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "message_box",
+    "url": "https://github.com/nitad54448/message_box",
+    "description": "A utility for creating custom message boxes in LabVIEW.",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "Graph with Y error bars",
+    "url": "https://github.com/nitad54448/XY_graph",
+    "description": "A LabVIEW utility for creating XY graphs with Y error bars.",
+    "language": "LabVIEW",
+    "category": "Developer Utilities",
+    "subcategory": null
+  },
+  {
+    "name": "Md 2 pdf",
+    "url": "https://nitad54448.github.io/tools/md_2_pdf.html",
+    "description": "Convert a md file into pdf.",
+    "language": "JavaScript",
+    "category": "Tools",
+    "subcategory": null
+  },
+  {
+    "name": "TDMS reader",
+    "url": "https://nitad54448.github.io/Sauerbrey/tdms-reader.html",
+    "description": "Read and Export data from TDMS files.",
+    "language": "JavaScript",
+    "category": "Tools",
+    "subcategory": null
+  },
+  {
+    "name": "CSV Scrapper",
+    "url": "https://nitad54448.github.io/ZhInst/zhinst_csv_scrapper.html",
+    "description": "Visualize/convert CSV from Zurich Instruments lock-ins.",
+    "language": "JavaScript",
+    "category": "Tools",
+    "subcategory": null
+  },
+  {
+    "name": "Optical encoder",
+    "url": "https://nitad54448.github.io/tools/encoder.html",
+    "description": "Simulate optical encoders.",
+    "language": "JavaScript",
+    "category": "Tools",
+    "subcategory": null
+  },
+  {
+    "name": "MP4 to Gif",
+    "url": "https://nitad54448.github.io/mp4_to_gif/index.html",
+    "description": "Convert MP4 to animated Gif. Not so useful, sometimes I use this for making animated Splash vi's in Labview.",
+    "language": "JavaScript",
+    "category": "Tools",
+    "subcategory": null
+  },
+  {
+    "name": "Motricity",
+    "url": "https://nitad54448.github.io/Motricity/",
+    "description": "Simple response time tester.",
+    "language": "JavaScript",
+    "category": "General & Fun",
+    "subcategory": null
+  },
+  {
+    "name": "Local meteo",
+    "url": "https://nitad54448.github.io/meteo/",
+    "description": "Local weather forecast.",
+    "language": "JavaScript",
+    "category": "General & Fun",
+    "subcategory": null
+  },
+  {
+    "name": "Radio is not dead",
+    "url": "https://nitad54448.github.io/radio/",
+    "description": "Listen to some radios.",
+    "language": "JavaScript",
+    "category": "General & Fun",
+    "subcategory": null
+  },
+  {
+    "name": "Calendar",
+    "url": "https://nitad54448.github.io/calendrier/",
+    "description": "Print a simple calendar.",
+    "language": "JavaScript",
+    "category": "General & Fun",
+    "subcategory": null
+  },
+  {
+    "name": "NASA APOD",
+    "url": "https://nitad54448.github.io/apod/",
+    "description": "Displays NASA's Astronomy Picture of the Day.",
+    "language": "JavaScript",
+    "category": "General & Fun",
+    "subcategory": null
+  },
+  {
+    "name": "Snake Game",
+    "url": "https://nitad54448.github.io/snake/",
+    "description": "A classic snake game.",
+    "language": "JavaScript",
+    "category": "General & Fun",
+    "subcategory": null
+  }
+]
