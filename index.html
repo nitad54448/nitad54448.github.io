@@ -4,199 +4,635 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Utilities</title>
-    <link href="./dist/output.css" rel="stylesheet">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
+            margin: 0;
             font-family: 'Poppins', sans-serif;
+            color: #e5e7eb;
             background-color: #111827;
             background-image: radial-gradient(circle at 1px 1px, #374151 1px, transparent 0);
             background-size: 25px 25px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .accordion-header-button {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
             width: 100%;
-            text-align: left;
-            border-radius: 0.75rem;
-        }
-        .accordion-header-button:hover {
-            background: rgba(55, 65, 81, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s ease-out, padding 0.7s ease-out;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom-left-radius: 0.75rem;
-            border-bottom-right-radius: 0.75rem;
-            background: rgba(255, 255, 255, 0.03);
-        }
-        .accordion-content.active {
-            max-height: 8000px;
-            padding: 1.5rem;
-        }
-        .accordion-icon {
-            transition: transform 0.3s ease;
-        }
-        .accordion-header-button.active .accordion-icon {
-            transform: rotate(90deg);
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem;
         }
 
-        .link-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
-            cursor: pointer;
+        @media (min-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
         }
-        .link-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-        
 
+        /* Header */
+        .site-header {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .site-header h1 {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 0 0 1rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .site-header h1 {
+                font-size: 3rem;
+                line-height: 1;
+            }
+        }
+
+        .site-header p {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            color: #9ca3af;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Sticky Search */
         .sticky-search {
             position: sticky;
             top: 0;
             z-index: 50;
             margin-bottom: 2rem;
-            background: #111827; /* Matches body background exactly */
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            background: #111827;
+            padding: 1rem 0;
         }
 
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(30, 41, 59, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 0 1rem 0 1.5rem;
+            height: 3.5rem;
+            transition: border-color 0.15s ease;
+        }
+
+        .search-box:focus-within {
+            border-color: #38bdf8;
+        }
+
+        .search-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            color: #9ca3af;
+            flex-shrink: 0;
+        }
 
         #search-input {
-background-color: rgba(30, 41, 59, 0.5);
-border: 1px solid rgba(255, 255, 255, 0.2);
-color: white;
-padding: 1rem 1rem 1rem 4.25rem;
-height: 3.5rem;
-border-radius: 0.5rem;
-width: 100%;
-box-sizing: border-box;
-}
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            outline: none;
+        }
 
-#search-input:focus {
-outline: none;
-border-color: #38bdf8;
-}
+        #search-input::placeholder {
+            color: #9ca3af;
+        }
+
+        #clear-search {
+            background: transparent;
+            border: none;
+            padding: 0.25rem;
+            color: #9ca3af;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.15s ease;
+        }
+
+        #clear-search:hover {
+            color: #ffffff;
+        }
+
+        #clear-search svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
 
         #search-results-container {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
             max-height: 400px;
             overflow-y: auto;
             display: none;
             scrollbar-width: thin;
             scrollbar-color: #374151 transparent;
-            background: rgba(30, 41, 59, 0.95); /* Semi-transparent dark blue-gray */
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(30, 41, 59, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-top: none;
             border-bottom-left-radius: 0.5rem;
             border-bottom-right-radius: 0.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.6);
+            z-index: 60;
         }
 
-        
+        #results-list {
+            padding: 0.5rem;
+        }
+
         .result-row {
-border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-padding: 1.25rem 1rem 1.25rem 4.25rem;
-cursor: pointer;
-transition: background-color 0.2s ease;
-}
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.12s ease;
+        }
 
-.result-row:hover {
-background-color: rgba(255, 255, 255, 0.05);
-}
+        .result-row:hover {
+            background-color: #1f2937;
+        }
 
-.result-row:last-child {
-border-bottom: none;
-}
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-row-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .result-title {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.12s ease;
+        }
+
+        .result-row:hover .result-title {
+            color: #22d3ee;
+        }
+
+        .result-url {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .result-url {
+                display: inline-block;
+            }
+        }
+
+        .result-desc {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin: 0.25rem 0 0 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .no-results {
+            padding: 1rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* Layout Stacks & Grids */
+        .stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Fast Accordions using CSS Grid 0fr -> 1fr */
+        .accordion-header-button {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.15s ease, border-color 0.15s ease, border-radius 0.15s ease;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        .accordion-header-button:hover {
+            background: rgba(55, 65, 81, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .accordion-header-button.active {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .accordion-title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         .sub-accordion-header-button {
-            background: rgba(20, 31, 49, 0.5); 
-            padding: 1rem 1.5rem; 
+            background: rgba(20, 31, 49, 0.65);
+            padding: 1rem 1.5rem;
         }
+
         .sub-accordion-header-button:hover {
-            background: rgba(45, 55, 71, 0.7);
+            background: rgba(45, 55, 71, 0.8);
         }
+
+        .sub-accordion-title {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .category-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .icon-teal   { color: #2dd4bf; }
+        .icon-cyan   { color: #22d3ee; }
+        .icon-yellow { color: #facc15; }
+        .icon-purple { color: #c084fc; }
+        .icon-rose   { color: #fb7185; }
+        .icon-lime   { color: #a3e635; }
+        .icon-orange { color: #fb923c; }
+        .icon-blue   { color: #60a5fa; }
+        .icon-slate  { color: #94a3b8; }
+
+        .accordion-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #9ca3af;
+            flex-shrink: 0;
+            transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-icon-sm {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .accordion-header-button.active .accordion-icon {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .accordion-content > div {
+            overflow: hidden;
+            min-height: 0;
+            padding: 0 1.5rem;
+            transition: padding 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-content.active {
+            grid-template-rows: 1fr;
+            border-left-color: rgba(255, 255, 255, 0.1);
+            border-right-color: rgba(255, 255, 255, 0.1);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-content.active > div {
+            padding: 1.5rem;
+        }
+
         .sub-accordion-content {
-             background: rgba(255, 255, 255, 0.01); 
-             border-top: 1px solid rgba(255, 255, 255, 0.1);
-             padding: 0 !important;
+            background: rgba(255, 255, 255, 0.01);
         }
+
         .sub-accordion-content.active {
-            max-height: 5000px;
-            padding: 1.5rem !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Cards */
+        .link-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+            cursor: pointer;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .card-body {
+            flex-grow: 1;
+        }
+
+        .link-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .link-item h3 a {
+            transition: color 0.15s ease;
+        }
+
+        .link-item:hover h3 a,
+        .link-item h3 a:hover {
+            color: #5eead4;
+        }
+
+        .link-item p {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: #9ca3af;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .card-footer {
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .badge-js { background-color: #1F2937; color: #F7DF1E; }
+        .badge-py { background-color: #1F2937; color: #3776AB; }
+        .badge-lv { background-color: #367859; color: #ffffff; }
+        .badge-vb { background-color: #1E40AF; color: #ffffff; }
+
+        .repo-link {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            transition: color 0.15s ease;
+        }
+
+        .repo-link:hover {
+            color: #5eead4;
+        }
+
+        /* Profiles & Footer */
+        .profiles-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .profiles-section {
+                margin: 5rem 0;
+            }
+        }
+
+        .profiles-section h2 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 0 0 2rem 0;
+        }
+
+        .profiles-list {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .profiles-list {
+                gap: 1.5rem;
+            }
+        }
+
+        .profile-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #9ca3af;
+            transition: color 0.2s ease;
+            width: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .profile-link {
+                width: 6rem;
+            }
+        }
+
+        .profile-link svg {
+            width: 2rem;
+            height: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-link span {
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+
+        .profile-univ:hover    { color: #8D5D9A; }
+        .profile-scholar:hover { color: #4285F4; }
+        .profile-orcid:hover   { color: #A6CE39; }
+        .profile-rg:hover      { color: #00CCBB; }
+        .profile-github        { color: #6b7280; width: 5rem; }
+        .profile-github:hover  { color: #6e5494; }
+        .profile-github svg    { margin-bottom: 0.25rem; }
+        .profile-github span   { font-weight: 400; }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .site-footer p {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            color: #9ca3af;
+            margin: 0;
+        }
+
+        .site-footer p a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .app-count {
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .footer-github {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
         }
     </style>
 </head>
-<body class="text-gray-200">
+<body>
 
-    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+    <div class="container">
 
-        <header class="text-center mt-12 mb-6">
-            <h1 class="text-4xl md:text-5xl text-white mb-4">Nita's public software collection</h1>
-            <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+        <header class="site-header">
+            <h1>Nita's public software collection</h1>
+            <p>
                 A curated collection of software utilities that I wrote, mainly in Labview and JS, for research, teaching or just for fun. Some of them have little utility, I use this site as a repository.
             </p>
         </header>
 
         <section class="sticky-search">
-            <div class="relative w-full">
-                <div class="relative w-full flex items-center space-x-4 bg-transparent" style="background-color: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0.5rem; padding: 1rem 1rem 1rem 1.5rem; height: 3.5rem;">
-                <svg class="w-7 h-7 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
-                <input type="text" id="search-input" placeholder="Search for a keyword (e.g. Diffraction, Miller, ...)" style="background: transparent; border: none; padding: 0; height: auto; width: 100%;">
-                <button id="clear-search" class="text-gray-400 hover:text-white hidden flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-             <div id="search-results-container">
-                <div id="results-list" class="p-2"></div>
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                    <input type="text" id="search-input" placeholder="Search for a keyword (e.g. Diffraction, Miller, ...)">
+                    <button id="clear-search" class="hidden" aria-label="Clear search">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <div id="search-results-container">
+                    <div id="results-list"></div>
+                </div>
             </div>
         </section>
 
-
-        <main class="space-y-4">
+        <main class="stack">
 
             <!-- 1. CRYSTALLOGRAPHY -->
             <div class="accordion-item">
-                <button id="accordion-btn-cryst" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-cryst">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                <button id="accordion-btn-cryst" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-cryst">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-teal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
                         <span>Crystallography</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-cryst" class="accordion-content" role="region" aria-labelledby="accordion-btn-cryst">
-                    <div class="space-y-4">
+                    <div class="stack">
                         
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Symmetry</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/Miller.html" target="_blank" class="hover:text-teal-300">Miller Planes</a></h3><p class="text-sm text-gray-400">Visualize directions or crystallographic planes.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/stereo.html" target="_blank" class="hover:text-teal-300">Stereographic</a></h3><p class="text-sm text-gray-400">Visualize point symmetry operations with stereographic projections.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/2D_space_groups.html" target="_blank" class="hover:text-teal-300">2D Space groups</a></h3><p class="text-sm text-gray-400">Symmetry and positions in the 2D space groups.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/point_symmetry.html" target="_blank" class="hover:text-teal-300">Point Group Symmetry</a></h3><p class="text-sm text-gray-400">Motifs and symmetry operations for the 32 point groups.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/Miller.html" target="_blank" rel="noopener noreferrer">Miller Planes</a></h3><p>Visualize directions or crystallographic planes.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/stereo.html" target="_blank" rel="noopener noreferrer">Stereographic</a></h3><p>Visualize point symmetry operations with stereographic projections.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/2D_space_groups.html" target="_blank" rel="noopener noreferrer">2D Space groups</a></h3><p>Symmetry and positions in the 2D space groups.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/point_symmetry.html" target="_blank" rel="noopener noreferrer">Point Group Symmetry</a></h3><p>Motifs and symmetry operations for the 32 point groups.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                              
-                                  <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/SpaceExplorer/" target="_blank" class="hover:text-teal-300">3D Space Groups</a></h3><p class="text-sm text-gray-400">Tables of symmetry, positions and hkl rules for 527 settings of 3D space groups.</p></div><div class="mt-3 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #3776AB;">Python</span></div></div></div>
+                                  <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/SpaceExplorer/" target="_blank" rel="noopener noreferrer">3D Space Groups</a></h3><p>Tables of symmetry, positions and hkl rules for 527 settings of 3D space groups.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span><span class="badge badge-py">Python</span></div></div></div>
 
                                 
                                 </div>
@@ -204,20 +640,20 @@ border-bottom: none;
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Simulations</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="cards-grid">
                                  
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/RSpace.html" target="_blank" class="hover:text-teal-300">Reciprocal Space Viewer</a></h3><p class="text-sm text-gray-400">Visualizes reciprocal lattice, distances, and Brillouin zones.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/pdf.html" target="_blank" class="hover:text-teal-300">PDF Explorer</a></h3><p class="text-sm text-gray-400">Interactive Pair Distribution Function g(d) for 2D arrangements.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/RSpace.html" target="_blank" rel="noopener noreferrer">Reciprocal Space Viewer</a></h3><p>Visualizes reciprocal lattice, distances, and Brillouin zones.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/pdf.html" target="_blank" rel="noopener noreferrer">PDF Explorer</a></h3><p>Interactive Pair Distribution Function g(d) for 2D arrangements.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
 
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/patterns.html" target="_blank" class="hover:text-teal-300">2D patterns generator</a></h3><p class="text-sm text-gray-400">Generates images based on the 17 space groups symmetry.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/symmetry_tool.html" target="_blank" class="hover:text-teal-300">3D Symmetry</a></h3><p class="text-sm text-gray-400">Analyzes symmetry operations and translations in 3D.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/patterns.html" target="_blank" rel="noopener noreferrer">2D patterns generator</a></h3><p>Generates images based on the 17 space groups symmetry.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/symmetry_tool.html" target="_blank" rel="noopener noreferrer">3D Symmetry</a></h3><p>Analyzes symmetry operations and translations in 3D.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                     
 
                                 </div>
@@ -230,37 +666,37 @@ border-bottom: none;
 
             <!-- 2. DIFFRACTION & SCATTERING -->
             <div class="accordion-item">
-                <button id="accordion-btn-diff" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-diff">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M3.75 4.5h16.5m-16.5 3.75h16.5" /></svg>
+                <button id="accordion-btn-diff" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-diff">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-cyan" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M3.75 4.5h16.5m-16.5 3.75h16.5" /></svg>
                         <span>Diffraction & Scattering</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-diff" class="accordion-content" role="region" aria-labelledby="accordion-btn-diff">
-                    <div class="space-y-4">
+                    <div class="stack">
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Powder Diffraction</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/brutus/" target="_blank" class="hover:text-teal-300">Brutus</a></h3><p class="text-sm text-gray-400">GPU-based powder diffraction indexing (exhaustive search).</p></div><div class="mt-3 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #3776AB;">Python</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/powder5/powder5.html" target="_blank" class="hover:text-teal-300">Powder 5</a></h3><p class="text-sm text-gray-400">Unit cell refinements with LeBail method or Pawley extraction for X-ray/neutron powder diffraction patterns.<br>Charge flipping or Monte-Carlo structure search with WebGPU. </p></div><div class="mt-3 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #3776AB;">Python</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/brutus/" target="_blank" rel="noopener noreferrer">Brutus</a></h3><p>GPU-based powder diffraction indexing (exhaustive search).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span><span class="badge badge-py">Python</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/powder5/powder5.html" target="_blank" rel="noopener noreferrer">Powder 5</a></h3><p>Unit cell refinements with LeBail method or Pawley extraction for X-ray/neutron powder diffraction patterns.<br>Charge flipping or Monte-Carlo structure search with WebGPU. </p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span><span class="badge badge-py">Python</span></div></div></div>
  
-                                   <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/compHarker/" target="_blank" class="hover:text-teal-300">compHarker</a></h3><p class="text-sm text-gray-400">Composition driven analysis of Patterson/Harker maps with Metropolis algorithm on WebGPU.</p></div><div class="mt-3 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #3776AB;">Python</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Harko/Harko.html" target="_blank" class="hover:text-teal-300">Harko</a></h3><p class="text-sm text-gray-400">Analyze Harker planes in Patterson maps with Swarm technology.</p></div><div class="mt-3 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #3776AB;">Python</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/indexMan/IndexMan.html" target="_blank" class="hover:text-teal-300">IndexMan</a></h3><p class="text-sm text-gray-400">Generate HKL for any space group; manually index patterns.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                   <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/compHarker/" target="_blank" rel="noopener noreferrer">compHarker</a></h3><p>Composition driven analysis of Patterson/Harker maps with Metropolis algorithm on WebGPU.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span><span class="badge badge-py">Python</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Harko/Harko.html" target="_blank" rel="noopener noreferrer">Harko</a></h3><p>Analyze Harker planes in Patterson maps with Swarm technology.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span><span class="badge badge-py">Python</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/indexMan/IndexMan.html" target="_blank" rel="noopener noreferrer">IndexMan</a></h3><p>Generate HKL for any space group; manually index patterns.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
 
                                    
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/combs/combs.html" target="_blank" class="hover:text-teal-300">Combs</a></h3><p class="text-sm text-gray-400">Powder diffraction lattice indexing (combinatorial hkl search).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/powder4_source" target="_blank" class="hover:text-slate-300">powder4_source</a></h3><p class="text-sm text-gray-400">Legacy utility for converting, indexing, simulating, and analyzing powder data.</p></div><div class="mt-3 flex items-center space-x-2"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #1E40AF;">VB / Fortran</span></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/misfit/misfit.html" target="_blank" class="hover:text-teal-300">Misfit-fit</a></h3><p class="text-sm text-gray-400">Lattice parameter fit (LeBail) for modulated structures.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/scpxrd.html" target="_blank" class="hover:text-teal-300">Simple Cubic Powder XRD</a></h3><p class="text-sm text-gray-400">Simulate the simple cubic powder X-ray diffraction.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/combs/combs.html" target="_blank" rel="noopener noreferrer">Combs</a></h3><p>Powder diffraction lattice indexing (combinatorial hkl search).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/powder4_source" target="_blank" rel="noopener noreferrer">powder4_source</a></h3><p>Legacy utility for converting, indexing, simulating, and analyzing powder data.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-vb">VB / Fortran</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/misfit/misfit.html" target="_blank" rel="noopener noreferrer">Misfit-fit</a></h3><p>Lattice parameter fit (LeBail) for modulated structures.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/scpxrd.html" target="_blank" rel="noopener noreferrer">Simple Cubic Powder XRD</a></h3><p>Simulate the simple cubic powder X-ray diffraction.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                
 
                                
@@ -270,27 +706,27 @@ border-bottom: none;
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Methods</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="cards-grid">
 
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/ewald.html" target="_blank" class="hover:text-teal-300">Ewald Sphere Viewer</a></h3><p class="text-sm text-gray-400">Visualizes the Ewald sphere construction in reciprocal space.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/ewald.html" target="_blank" rel="noopener noreferrer">Ewald Sphere Viewer</a></h3><p>Visualizes the Ewald sphere construction in reciprocal space.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                     
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/4-circles.html" target="_blank" class="hover:text-teal-300">Single Crystal Diffraction</a></h3><p class="text-sm text-gray-400">Advanced simulator for 4-circle experiments.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/2D_diffraction.html" target="_blank" class="hover:text-teal-300">2D diffraction</a></h3><p class="text-sm text-gray-400">Diffraction patterns of 2D structures.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/Powder.html" target="_blank" class="hover:text-teal-300">Powder Diffraction</a></h3><p class="text-sm text-gray-400">Visualizes polycristalline diffraction.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/4-circles.html" target="_blank" rel="noopener noreferrer">Single Crystal Diffraction</a></h3><p>Advanced simulator for 4-circle experiments.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/2D_diffraction.html" target="_blank" rel="noopener noreferrer">2D diffraction</a></h3><p>Diffraction patterns of 2D structures.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/Powder.html" target="_blank" rel="noopener noreferrer">Powder Diffraction</a></h3><p>Visualizes polycristalline diffraction.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                
                                          
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Laue/Laue.html" target="_blank" class="hover:text-teal-300">Laue Diffraction</a></h3><p class="text-sm text-gray-400">Simulator for single-crystal Laue diffraction.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Laue/Orient.html" target="_blank" class="hover:text-teal-300">Orient-a-Laue</a></h3><p class="text-sm text-gray-400">Simulate Laue patterns and orient single crystals (experimental).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Laue/Laue.html" target="_blank" rel="noopener noreferrer">Laue Diffraction</a></h3><p>Simulator for single-crystal Laue diffraction.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Laue/Orient.html" target="_blank" rel="noopener noreferrer">Orient-a-Laue</a></h3><p>Simulate Laue patterns and orient single crystals (experimental).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                
 
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Patterson/Patterson.html" target="_blank" class="hover:text-teal-300">Patterson function</a></h3><p class="text-sm text-gray-400">Demonstrates structure, diffraction pattern, and Patterson function.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Patterson/Patterson.html" target="_blank" rel="noopener noreferrer">Patterson function</a></h3><p>Demonstrates structure, diffraction pattern, and Patterson function.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 
                                     
                                
@@ -300,17 +736,17 @@ border-bottom: none;
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Reflectivity & Wave Dynamics</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/WaveXplorer.html" target="_blank" class="hover:text-teal-300">WaveXplorer</a></h3><p class="text-sm text-gray-400">Visualizing fundamental concepts of waves.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/kiessig.html" target="_blank" class="hover:text-teal-300">Kiessig Fringes</a></h3><p class="text-sm text-gray-400">X-ray Reflectivity for a single film on a substrate.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/xrr.html" target="_blank" class="hover:text-teal-300">X-ray reflectivity</a></h3><p class="text-sm text-gray-400">Multi-layers X-ray Reflectivity (XRR) calculator.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/WaveXplorer.html" target="_blank" rel="noopener noreferrer">WaveXplorer</a></h3><p>Visualizing fundamental concepts of waves.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/kiessig.html" target="_blank" rel="noopener noreferrer">Kiessig Fringes</a></h3><p>X-ray Reflectivity for a single film on a substrate.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/xrr.html" target="_blank" rel="noopener noreferrer">X-ray reflectivity</a></h3><p>Multi-layers X-ray Reflectivity (XRR) calculator.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 </div>
                             </div>
                         </div>
@@ -321,69 +757,69 @@ border-bottom: none;
 
             <!-- 3. PHYSICAL PROPERTIES & TRANSPORT -->
             <div class="accordion-item">
-                <button id="accordion-btn-phys" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-phys">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                         <svg class="w-7 h-7 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                <button id="accordion-btn-phys" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-phys">
+                    <h2 class="accordion-title">
+                         <svg class="category-icon icon-yellow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
                         <span>Physical Properties & Transport</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-phys" class="accordion-content" role="region" aria-labelledby="accordion-btn-phys">
-                    <div class="space-y-4">
+                    <div class="stack">
                         
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Thermal</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/calculate_Seebeck" target="_blank" class="hover:text-yellow-300">Seebeck Calculator</a></h3><p class="text-sm text-gray-400">Calculates absolute Seebeck coefficient for thermoelectric legs.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/seebeck.html" target="_blank" class="hover:text-teal-300">Online Seebeck Calculator</a></h3><p class="text-sm text-gray-400">Calculates thermoelectric power for common thermocouples.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/calc_3omega/" target="_blank" class="hover:text-teal-300">3-omega 2D fit</a></h3><p class="text-sm text-gray-400">Calculates thermal properties from 3-omega experiments (2D model).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/calc_3omega/3omega_linear_fit.html" target="_blank" class="hover:text-teal-300">3-omega Linear fit</a></h3><p class="text-sm text-gray-400">Calculates thermal conductivity via linear fitting of 3rd harmonic.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/sim_3omega/" target="_blank" class="hover:text-teal-300">Simulate 3-omega</a></h3><p class="text-sm text-gray-400">Simulates harmonic signals for thermal conductivity experiments.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/Versatile" target="_blank" class="hover:text-slate-300">Versatile</a></h3><p class="text-sm text-gray-400 mt-1">Legacy program for calculating non-isothermal kinetic parameters. Written in Visual Basic in 1994-1995, upgrade of an older program written in Quick Basic in 1988.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #1E40AF;">Visual Basic</span></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/calculate_Seebeck" target="_blank" rel="noopener noreferrer">Seebeck Calculator</a></h3><p>Calculates absolute Seebeck coefficient for thermoelectric legs.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/seebeck.html" target="_blank" rel="noopener noreferrer">Online Seebeck Calculator</a></h3><p>Calculates thermoelectric power for common thermocouples.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/calc_3omega/" target="_blank" rel="noopener noreferrer">3-omega 2D fit</a></h3><p>Calculates thermal properties from 3-omega experiments (2D model).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/calc_3omega/3omega_linear_fit.html" target="_blank" rel="noopener noreferrer">3-omega Linear fit</a></h3><p>Calculates thermal conductivity via linear fitting of 3rd harmonic.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/sim_3omega/" target="_blank" rel="noopener noreferrer">Simulate 3-omega</a></h3><p>Simulates harmonic signals for thermal conductivity experiments.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/Versatile" target="_blank" rel="noopener noreferrer">Versatile</a></h3><p>Legacy program for calculating non-isothermal kinetic parameters. Written in Visual Basic in 1994-1995, upgrade of an older program written in Quick Basic in 1988.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-vb">Visual Basic</span></div></div></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Electrical & Magnetic</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/Halbach" target="_blank" class="hover:text-cyan-300">HT-Halbach</a></h3><p class="text-sm text-gray-400">System for measuring Hall effect at high temperature (DC and AC).</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Hall/" target="_blank" class="hover:text-teal-300">Calculate Hall signal</a></h3><p class="text-sm text-gray-400">Calculates Hall signals for various conditions.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/Halbach" target="_blank" rel="noopener noreferrer">HT-Halbach</a></h3><p>System for measuring Hall effect at high temperature (DC and AC).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Hall/" target="_blank" rel="noopener noreferrer">Calculate Hall signal</a></h3><p>Calculates Hall signals for various conditions.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                     
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Halbach_simulator/Halbach.html" target="_blank" class="hover:text-teal-300">Halbach array simulator</a></h3><p class="text-sm text-gray-400">Simulates the magnetic field in some Halbach arrays built with discrete cyclindrical components.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Halbach_simulator/Halbach.html" target="_blank" rel="noopener noreferrer">Halbach array simulator</a></h3><p>Simulates the magnetic field in some Halbach arrays built with discrete cyclindrical components.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                     
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Halbach_simulator/Mandhala.html" target="_blank" class="hover:text-teal-300">Mandhala</a></h3><p class="text-sm text-gray-400">This is an exploration of the magnetic field (equivelent to k=2 in a Halbach setup) that can be obtained with some exotic distributions of dipoles (fullerene, Lebedev and Fibonacci).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Halbach_simulator/Mandhala.html" target="_blank" rel="noopener noreferrer">Mandhala</a></h3><p>This is an exploration of the magnetic field (equivelent to k=2 in a Halbach setup) that can be obtained with some exotic distributions of dipoles (fullerene, Lebedev and Fibonacci).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                     
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank" class="hover:text-yellow-300">Van der Pauw Calculator</a></h3><p class="text-sm text-gray-400">Calculates resistivity from van der Pauw method measurements.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/programmable_Resistor" target="_blank" class="hover:text-yellow-300">Programmable Resistor</a></h3><p class="text-sm text-gray-400">Design and simulate a programmable resistor for automated testing.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/van_der_Pauw_Labview" target="_blank" rel="noopener noreferrer">Van der Pauw Calculator</a></h3><p>Calculates resistivity from van der Pauw method measurements.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/programmable_Resistor" target="_blank" rel="noopener noreferrer">Programmable Resistor</a></h3><p>Design and simulate a programmable resistor for automated testing.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Diffusion</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Fick/diffusion_main.html" target="_blank" class="hover:text-teal-300">Fick's Laws</a></h3><p class="text-sm text-gray-400">Simulation of 1D diffusion processes and concentration profiles.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Fick/onsager.html" target="_blank" class="hover:text-teal-300">Onsager's diffusion model</a></h3><p class="text-sm text-gray-400">Simulation of 1D multi-component diffusion processes, fluxes and concentration profiles with the Onsager's model.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Fick/ThermoMigrate.html" target="_blank" class="hover:text-teal-300">ThermoMigrate</a></h3><p class="text-sm text-gray-400">Explore thermal migration in thermocouple legs.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Fick/diffusion_main.html" target="_blank" rel="noopener noreferrer">Fick's Laws</a></h3><p>Simulation of 1D diffusion processes and concentration profiles.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Fick/onsager.html" target="_blank" rel="noopener noreferrer">Onsager's diffusion model</a></h3><p>Simulation of 1D multi-component diffusion processes, fluxes and concentration profiles with the Onsager's model.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Fick/ThermoMigrate.html" target="_blank" rel="noopener noreferrer">ThermoMigrate</a></h3><p>Explore thermal migration in thermocouple legs.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 </div>
                             </div>
                         </div>
@@ -394,60 +830,60 @@ border-bottom: none;
 
             <!-- 4. SPECTROSCOPY & IMAGING -->
             <div class="accordion-item">
-                <button id="accordion-btn-spec" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-spec">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-purple-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                <button id="accordion-btn-spec" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-spec">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         <span>Spectroscopy & Imaging</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-spec" class="accordion-content" role="region" aria-labelledby="accordion-btn-spec">
-                    <div class="space-y-4">
+                    <div class="stack">
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Spectroscopy</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/yappari-5-1" target="_blank" class="hover:text-cyan-300">Yappari</a></h3><p class="text-sm text-gray-400">Impedance spectroscopy analysis (non-linear fitting, DRT, Z-Hit).</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                       <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/yappari_js/" target="_blank" class="hover:text-teal-300">Yappari JS</a></h3><p class="text-sm text-gray-400">A browser version of the older Yappari, a software for impedance spectroscopy. It can be used online without installation.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/yappari-5-1" target="_blank" rel="noopener noreferrer">Yappari</a></h3><p>Impedance spectroscopy analysis (non-linear fitting, DRT, Z-Hit).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                       <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/yappari_js/" target="_blank" rel="noopener noreferrer">Yappari JS</a></h3><p>A browser version of the older Yappari, a software for impedance spectroscopy. It can be used online without installation.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
    
                                     
 
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Hephaestus/" target="_blank" class="hover:text-teal-300">Hephaestus-lite</a></h3><p class="text-sm text-gray-400">X-ray data for all elements. A reduced version of the Hephaestus/Athene package which you should use for many other functionalities.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Hephaestus/" target="_blank" rel="noopener noreferrer">Hephaestus-lite</a></h3><p>X-ray data for all elements. A reduced version of the Hephaestus/Athene package which you should use for many other functionalities.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                    
 
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Sauerbrey/sauerbrey.html" target="_blank" class="hover:text-teal-300">Sauerbrey</a></h3><p class="text-sm text-gray-400">Estimate deposition rates with QCM.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Sauerbrey/sauerbrey.html" target="_blank" rel="noopener noreferrer">Sauerbrey</a></h3><p>Estimate deposition rates with QCM.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                    
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Tauc/gap.html" target="_blank" class="hover:text-teal-300">Gap</a></h3><p class="text-sm text-gray-400">Estimate bandgap with simple linearisation of Tauc plots.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/Emission.html" target="_blank" class="hover:text-teal-300">X-ray Emission Spectra</a></h3><p class="text-sm text-gray-400">Generates and displays X-ray emission spectra.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/filtres.html" target="_blank" class="hover:text-teal-300">X-ray Absorption & Filters</a></h3><p class="text-sm text-gray-400">Simulates the effect of a filter on an X-ray spectrum.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/monochromateur.html" target="_blank" class="hover:text-teal-300">X-ray Monochromators</a></h3><p class="text-sm text-gray-400">Effect of a single crystal monochromator on an X-ray spectrum.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/exafs.html" target="_blank" class="hover:text-teal-300">EXAFS simulations</a></h3><p class="text-sm text-gray-400">Simple EXAFS simulations for single paths on 2D structures.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/niveaux_atomiques.html" target="_blank" class="hover:text-teal-300">Atomic Energy Levels</a></h3><p class="text-sm text-gray-400">Schematically displays atomic energy levels (K, L, M).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank" class="hover:text-yellow-300">High Pressure Calculator</a></h3><p class="text-sm text-gray-400">Calculates pressure from ruby fluorescence line shift.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Tauc/gap.html" target="_blank" rel="noopener noreferrer">Gap</a></h3><p>Estimate bandgap with simple linearisation of Tauc plots.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/Emission.html" target="_blank" rel="noopener noreferrer">X-ray Emission Spectra</a></h3><p>Generates and displays X-ray emission spectra.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/filtres.html" target="_blank" rel="noopener noreferrer">X-ray Absorption & Filters</a></h3><p>Simulates the effect of a filter on an X-ray spectrum.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/monochromateur.html" target="_blank" rel="noopener noreferrer">X-ray Monochromators</a></h3><p>Effect of a single crystal monochromator on an X-ray spectrum.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/exafs.html" target="_blank" rel="noopener noreferrer">EXAFS simulations</a></h3><p>Simple EXAFS simulations for single paths on 2D structures.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/niveaux_atomiques.html" target="_blank" rel="noopener noreferrer">Atomic Energy Levels</a></h3><p>Schematically displays atomic energy levels (K, L, M).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/high_pressure_Ruby" target="_blank" rel="noopener noreferrer">High Pressure Calculator</a></h3><p>Calculates pressure from ruby fluorescence line shift.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
                                 </div>
                             </div>
                         </div>
 
                          <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Imaging & Transforms</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/Radon.html" target="_blank" class="hover:text-teal-300">2D Radon Transform</a></h3><p class="text-sm text-gray-400">Computes and displays the 2D Radon Transform (Sinogram).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/ColorRadon.html" target="_blank" class="hover:text-teal-300">Color Radon Transform</a></h3><p class="text-sm text-gray-400">Explorer for the 2D Radon Transform on color images.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/3D_Radon.html" target="_blank" class="hover:text-teal-300">3D Radon Transform</a></h3><p class="text-sm text-gray-400">A 3D explorer for computed tomography.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/Hough.html" target="_blank" class="hover:text-teal-300">2D Hough Transform</a></h3><p class="text-sm text-gray-400">An interactive explorer for line detection in images.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/apod/camera.html" target="_blank" class="hover:text-teal-300">Simple camera</a></h3><p class="text-sm text-gray-400 mt-1">Camera feed with flip, markers and scale.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/Radon.html" target="_blank" rel="noopener noreferrer">2D Radon Transform</a></h3><p>Computes and displays the 2D Radon Transform (Sinogram).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/ColorRadon.html" target="_blank" rel="noopener noreferrer">Color Radon Transform</a></h3><p>Explorer for the 2D Radon Transform on color images.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/3D_Radon.html" target="_blank" rel="noopener noreferrer">3D Radon Transform</a></h3><p>A 3D explorer for computed tomography.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/Hough.html" target="_blank" rel="noopener noreferrer">2D Hough Transform</a></h3><p>An interactive explorer for line detection in images.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/apod/camera.html" target="_blank" rel="noopener noreferrer">Simple camera</a></h3><p>Camera feed with flip, markers and scale.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 </div>
                             </div>
                         </div>
@@ -458,55 +894,55 @@ border-bottom: none;
 
             <!-- 5. INSTRUMENTATION & PROCESS CONTROL -->
             <div class="accordion-item">
-                <button id="accordion-btn-instr" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-instr">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                         <svg class="w-7 h-7 text-rose-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 18H7.5M3.75 12h9.75m-9.75 0a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M17.25 12H21" /></svg>
+                <button id="accordion-btn-instr" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-instr">
+                    <h2 class="accordion-title">
+                         <svg class="category-icon icon-rose" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 18H7.5M3.75 12h9.75m-9.75 0a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M17.25 12H21" /></svg>
                         <span>Instrumentation & Process Control</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-instr" class="accordion-content" role="region" aria-labelledby="accordion-btn-instr">
-                    <div class="space-y-4">
+                    <div class="stack">
 
                          <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Design of Experiments (DOE)</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/sps/" target="_blank" class="hover:text-teal-300">SPS Control</a></h3><p class="text-sm text-gray-400">Interactive web app for a Spark Plasma Sintering system.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/pvd/" target="_blank" class="hover:text-teal-300">PVD Control</a></h3><p class="text-sm text-gray-400">Interface for a Physical Vapor Deposition system.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/cvd/" target="_blank" class="hover:text-teal-300">CVD Control</a></h3><p class="text-sm text-gray-400">Web application for a Chemical Vapor Deposition system.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/DOE/" target="_blank" class="hover:text-teal-300">General Purpose DOE Tool</a></h3><p class="text-sm text-gray-400">Design and analyze experiments (Factorial, RSM, Taguchi).</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div> </div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/sps/" target="_blank" rel="noopener noreferrer">SPS Control</a></h3><p>Interactive web app for a Spark Plasma Sintering system.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/pvd/" target="_blank" rel="noopener noreferrer">PVD Control</a></h3><p>Interface for a Physical Vapor Deposition system.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/cvd/" target="_blank" rel="noopener noreferrer">CVD Control</a></h3><p>Web application for a Chemical Vapor Deposition system.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/DOE/" target="_blank" rel="noopener noreferrer">General Purpose DOE Tool</a></h3><p>Design and analyze experiments (Factorial, RSM, Taguchi).</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div> </div></div>
                                 
                                 
-                                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/MCS/plan_MCS.html" target="_blank" class="hover:text-teal-300">MultiPass planner</a></h3><p class="text-sm text-gray-400">This program will design an experiment plan and prepare a JSON file with the settings selected by the user (Factorial, RSM, Taguchi). Used for an in house MultiPass program.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div> </div></div>
-                                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/MultiPASS_fit/hplc_analyzer.html" target="_blank" class="hover:text-teal-300">MultiPass Fit</a></h3><p class="text-sm text-gray-400">This is a program that will read a TDMS file obtained with MultiPASS v5 program, in order to perform HPLC analysis. Used for an in house MultiPass program.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div> </div></div>
-                                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/MCS/analysis_MCS.html" target="_blank" class="hover:text-teal-300">Optimum calculations</a></h3><p class="text-sm text-gray-400">Calculate optimum experimental parameters by using the plan obtained from Multipass and experimental results.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div> </div></div>
+                                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/MCS/plan_MCS.html" target="_blank" rel="noopener noreferrer">MultiPass planner</a></h3><p>This program will design an experiment plan and prepare a JSON file with the settings selected by the user (Factorial, RSM, Taguchi). Used for an in house MultiPass program.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div> </div></div>
+                                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/MultiPASS_fit/hplc_analyzer.html" target="_blank" rel="noopener noreferrer">MultiPass Fit</a></h3><p>This is a program that will read a TDMS file obtained with MultiPASS v5 program, in order to perform HPLC analysis. Used for an in house MultiPass program.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div> </div></div>
+                                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/MCS/analysis_MCS.html" target="_blank" rel="noopener noreferrer">Optimum calculations</a></h3><p>Calculate optimum experimental parameters by using the plan obtained from Multipass and experimental results.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div> </div></div>
                                 
                                 </div>
                             </div>
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Hardware Drivers</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank" class="hover:text-indigo-300">Keithley622x Control</a></h3><p class="text-sm text-gray-400">Control a Keithley 6221 AC/DC current source.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/ppms_control" target="_blank" class="hover:text-indigo-300">PPMS Control</a></h3><p class="text-sm text-gray-400">VIs for controlling a Quantum Design PPMS via GPIB.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/QR10x_Labview_drivers" target="_blank" class="hover:text-indigo-300">QR10x LabVIEW Drivers</a></h3><p class="text-sm text-gray-400">Drivers for controlling QR-10x programmable resistors.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
+                                <div class="cards-grid">
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/Keithley622x_control_Labview" target="_blank" rel="noopener noreferrer">Keithley622x Control</a></h3><p>Control a Keithley 6221 AC/DC current source.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/ppms_control" target="_blank" rel="noopener noreferrer">PPMS Control</a></h3><p>VIs for controlling a Quantum Design PPMS via GPIB.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/QR10x_Labview_drivers" target="_blank" rel="noopener noreferrer">QR10x LabVIEW Drivers</a></h3><p>Drivers for controlling QR-10x programmable resistors.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
  
 
 
-                                     <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/MFLI_SM" target="_blank" class="hover:text-indigo-300">MFLI_SM</a></h3><p class="text-sm text-gray-400">State Machine for Zurich Instruments MFLI lock-in amplifier.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
+                                     <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/MFLI_SM" target="_blank" rel="noopener noreferrer">MFLI_SM</a></h3><p>State Machine for Zurich Instruments MFLI lock-in amplifier.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
  
                                     </div>
                             </div>
@@ -517,64 +953,64 @@ border-bottom: none;
 
             <!-- 6. SIGNAL PROCESSING & MATHEMATICS -->
             <div class="accordion-item">
-                <button id="accordion-btn-math" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-math">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-lime-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>
+                <button id="accordion-btn-math" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-math">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-lime" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>
                         <span>Signal Processing & Mathematics</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-math" class="accordion-content" role="region" aria-labelledby="accordion-btn-math">
-                    <div class="space-y-4">
+                    <div class="stack">
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Signal Processing</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/FT.html" target="_blank" class="hover:text-teal-300">2D Fourier Transform</a></h3><p class="text-sm text-gray-400">Visualizes the 2D Fourier Transform of various sources.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/fourier_series/" target="_blank" class="hover:text-teal-300">Fourier series</a></h3><p class="text-sm text-gray-400">Generate simple waves with Fourier.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/Convolutions.html" target="_blank" class="hover:text-teal-300">Convolutions of functions</a></h3><p class="text-sm text-gray-400">Demonstrates simple 1D and 2D convolution functions.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/FT.html" target="_blank" rel="noopener noreferrer">2D Fourier Transform</a></h3><p>Visualizes the 2D Fourier Transform of various sources.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/fourier_series/" target="_blank" rel="noopener noreferrer">Fourier series</a></h3><p>Generate simple waves with Fourier.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/Convolutions.html" target="_blank" rel="noopener noreferrer">Convolutions of functions</a></h3><p>Demonstrates simple 1D and 2D convolution functions.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                      
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/filtre_1er_ordre.html" target="_blank" class="hover:text-teal-300">RC filter</a></h3><p class="text-sm text-gray-400">Simulate a simple 1 pass filter.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/filtre_1er_ordre.html" target="_blank" rel="noopener noreferrer">RC filter</a></h3><p>Simulate a simple 1 pass filter.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 
                                    
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/lia.html" target="_blank" class="hover:text-teal-300">Lock-in Amplifier</a></h3><p class="text-sm text-gray-400">Simulate how a lock-in amplifier works.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/lia.html" target="_blank" rel="noopener noreferrer">Lock-in Amplifier</a></h3><p>Simulate how a lock-in amplifier works.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                    
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Enseignement/interference.html" target="_blank" class="hover:text-teal-300">Light Interference</a></h3><p class="text-sm text-gray-400">A simple visualizing tool for interference of light.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Enseignement/interference.html" target="_blank" rel="noopener noreferrer">Light Interference</a></h3><p>A simple visualizing tool for interference of light.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="accordion-item">
-                            <button class="accordion-header-button sub-accordion-header-button flex justify-between items-center w-full">
-                                <h3 class="text-xl text-white flex items-center space-x-3">
+                            <button class="accordion-header-button sub-accordion-header-button">
+                                <h3 class="sub-accordion-title">
                                     <span>Pure Math & Probability</span>
                                 </h3>
-                                <svg class="w-5 h-5 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="accordion-icon accordion-icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                             <div class="accordion-content sub-accordion-content">
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/matrix/" target="_blank" class="hover:text-teal-300">Matrix</a></h3><p class="text-sm text-gray-400">Simple matrix operations.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/trig_circle.html" target="_blank" class="hover:text-teal-300">Trig_circle</a></h3><p class="text-sm text-gray-400">Trigonometric circle visialization.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/prime_numbers/" target="_blank" class="hover:text-teal-300">Prime numbers</a></h3><p class="text-sm text-gray-400">Visualize Ulam spiral.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/eratosthenes.html" target="_blank" class="hover:text-teal-300">Eratosthene sieve</a></h3><p class="text-sm text-gray-400">Find prime numbers.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/perfect.html" target="_blank" class="hover:text-teal-300">Perfect Numbers</a></h3><p class="text-sm text-gray-400">Find perfect positive integers.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/buffon.html" target="_blank" class="hover:text-teal-300">Buffon approximation</a></h3><p class="text-sm text-gray-400">Estimate pi with needles.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/markov.html" target="_blank" class="hover:text-teal-300">Markov chains</a></h3><p class="text-sm text-gray-400">About dependent probabilities.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/monte_carlo.html" target="_blank" class="hover:text-teal-300">Monte Carlo</a></h3><p class="text-sm text-gray-400">More probabilities.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/math/pascal.html" target="_blank" class="hover:text-teal-300">Pascal Triangles</a></h3><p class="text-sm text-gray-400">Binomial expansions and combinatorics.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/fractal_explorer/" target="_blank" class="hover:text-teal-300">Fractals explorer</a></h3><p class="text-sm text-gray-400">Visualize some fractals.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/spiral/" target="_blank" class="hover:text-teal-300">Fibonacci spiral</a></h3><p class="text-sm text-gray-400">A visual demonstration of Fibonacci numbers.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/Fibonacci" target="_blank" class="hover:text-slate-300">Fibonacci (LabVIEW)</a></h3><p class="text-sm text-gray-400 mt-1">Compute and visualize the Fibonacci sequence.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Collatz/" target="_blank" class="hover:text-teal-300">Collatz Conjecture</a></h3><p class="text-sm text-gray-400">Interactive visualization of the Collatz conjecture.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Conway/" target="_blank" class="hover:text-teal-300">Conway's Game of Life</a></h3><p class="text-sm text-gray-400">A simulation of Conway's Game of Life.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/graph_theory/" target="_blank" class="hover:text-teal-300">Play with graphs</a></h3><p class="text-sm text-gray-400 mt-1">Interactive web app looking for paths in graph theory.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                                    <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/kaprekar/" target="_blank" class="hover:text-teal-300">Kaprekar's Constant</a></h3><p class="text-sm text-gray-400 mt-1">Interactive web app illustrating Kaprekar's constant.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                                <div class="cards-grid">
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/matrix/" target="_blank" rel="noopener noreferrer">Matrix</a></h3><p>Simple matrix operations.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/trig_circle.html" target="_blank" rel="noopener noreferrer">Trig_circle</a></h3><p>Trigonometric circle visialization.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/prime_numbers/" target="_blank" rel="noopener noreferrer">Prime numbers</a></h3><p>Visualize Ulam spiral.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/eratosthenes.html" target="_blank" rel="noopener noreferrer">Eratosthene sieve</a></h3><p>Find prime numbers.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/perfect.html" target="_blank" rel="noopener noreferrer">Perfect Numbers</a></h3><p>Find perfect positive integers.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/buffon.html" target="_blank" rel="noopener noreferrer">Buffon approximation</a></h3><p>Estimate pi with needles.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/markov.html" target="_blank" rel="noopener noreferrer">Markov chains</a></h3><p>About dependent probabilities.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/monte_carlo.html" target="_blank" rel="noopener noreferrer">Monte Carlo</a></h3><p>More probabilities.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/math/pascal.html" target="_blank" rel="noopener noreferrer">Pascal Triangles</a></h3><p>Binomial expansions and combinatorics.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/fractal_explorer/" target="_blank" rel="noopener noreferrer">Fractals explorer</a></h3><p>Visualize some fractals.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/spiral/" target="_blank" rel="noopener noreferrer">Fibonacci spiral</a></h3><p>A visual demonstration of Fibonacci numbers.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/Fibonacci" target="_blank" rel="noopener noreferrer">Fibonacci (LabVIEW)</a></h3><p>Compute and visualize the Fibonacci sequence.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Collatz/" target="_blank" rel="noopener noreferrer">Collatz Conjecture</a></h3><p>Interactive visualization of the Collatz conjecture.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Conway/" target="_blank" rel="noopener noreferrer">Conway's Game of Life</a></h3><p>A simulation of Conway's Game of Life.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/graph_theory/" target="_blank" rel="noopener noreferrer">Play with graphs</a></h3><p>Interactive web app looking for paths in graph theory.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                                    <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/kaprekar/" target="_blank" rel="noopener noreferrer">Kaprekar's Constant</a></h3><p>Interactive web app illustrating Kaprekar's constant.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                                 </div>
                             </div>
                         </div>
@@ -585,47 +1021,47 @@ border-bottom: none;
 
             <!-- 7. DEVELOPER UTILITIES -->
             <div class="accordion-item">
-                <button id="accordion-btn-dev" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-dev">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-orange-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+                <button id="accordion-btn-dev" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-dev">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
                         <span>Developer Utilities</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-dev" class="accordion-content" role="region" aria-labelledby="accordion-btn-dev">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/FG_2D" target="_blank" class="hover:text-orange-300">FG_2D</a></h3><p class="text-sm text-gray-400">A Functional Global for reading and setting states of devices or processes, hold in a 2D array.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/FGV_indicators" target="_blank" class="hover:text-orange-300">FG_indicators</a></h3><p class="text-sm text-gray-400">A Functional Global for reading and setting booleans. This avoids race conditions, contrary to Globals.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/FG_tdms" target="_blank" class="hover:text-orange-300">TDMS</a></h3><p class="text-sm text-gray-400">A simple Functional Global utility to save data to TDMS files; Labview 2023</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                       <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/FG_save" target="_blank" class="hover:text-orange-300">FG_save</a></h3><p class="text-sm text-gray-400">A Functional Global utility to save data to ASCII files.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                       <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/create_report" target="_blank" class="hover:text-orange-300">Report Generator</a></h3><p class="text-sm text-gray-400">Generate reports from a Tab control in the user interface.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                       <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/splash" target="_blank" class="hover:text-orange-300">Splash</a></h3><p class="text-sm text-gray-400">Animated GIF splash window for LabVIEW programs.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                       <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/message_box" target="_blank" class="hover:text-orange-300">message_box</a></h3><p class="text-sm text-gray-400">A utility for creating custom message boxes in LabVIEW.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
-                       <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://github.com/nitad54448/XY_graph" target="_blank" class="hover:text-orange-300">Graph with Y error bars</a></h3><p class="text-sm text-gray-400">A LabVIEW utility for creating XY graphs with Y error bars.</p></div><div class="mt-3"><span class="text-sm font-medium text-white px-3 py-1 rounded-full inline-block" style="background-color: #367859;">LabVIEW</span></div></div>
+                    <div class="cards-grid">
+                        <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/FG_2D" target="_blank" rel="noopener noreferrer">FG_2D</a></h3><p>A Functional Global for reading and setting states of devices or processes, hold in a 2D array.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/FGV_indicators" target="_blank" rel="noopener noreferrer">FG_indicators</a></h3><p>A Functional Global for reading and setting booleans. This avoids race conditions, contrary to Globals.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/FG_tdms" target="_blank" rel="noopener noreferrer">TDMS</a></h3><p>A simple Functional Global utility to save data to TDMS files; Labview 2023</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                       <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/FG_save" target="_blank" rel="noopener noreferrer">FG_save</a></h3><p>A Functional Global utility to save data to ASCII files.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                       <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/create_report" target="_blank" rel="noopener noreferrer">Report Generator</a></h3><p>Generate reports from a Tab control in the user interface.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                       <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/splash" target="_blank" rel="noopener noreferrer">Splash</a></h3><p>Animated GIF splash window for LabVIEW programs.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                       <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/message_box" target="_blank" rel="noopener noreferrer">message_box</a></h3><p>A utility for creating custom message boxes in LabVIEW.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
+                       <div class="link-item"><div class="card-body"><h3><a href="https://github.com/nitad54448/XY_graph" target="_blank" rel="noopener noreferrer">Graph with Y error bars</a></h3><p>A LabVIEW utility for creating XY graphs with Y error bars.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-lv">LabVIEW</span></div></div></div>
                     </div>
                </div>
             </div>
             
             <!-- 8. TOOLS -->
             <div class="accordion-item">
-                <button id="accordion-btn-tools" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-tools">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" /></svg>
+                <button id="accordion-btn-tools" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-tools">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" /></svg>
                         <span>Tools</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-tools" class="accordion-content" role="region" aria-labelledby="accordion-btn-tools">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/tools/md_2_pdf.html" target="_blank" class="hover:text-teal-300">Md 2 pdf</a></h3><p class="text-sm text-gray-400 mt-1">Convert a md file into pdf.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Sauerbrey/tdms-reader.html" target="_blank" class="hover:text-teal-300">TDMS reader</a></h3><p class="text-sm text-gray-400 mt-1">Read and Export data from TDMS files.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/ZhInst/zhinst_csv_scrapper.html" target="_blank" class="hover:text-teal-300">CSV Scrapper</a></h3><p class="text-sm text-gray-400">Visualize/convert CSV from Zurich Instruments lock-ins.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div><a href="https://github.com/nitad54448/ZhInst/zhinst_csv_scrapper.html" target="_blank" class="text-sm text-gray-400 hover:text-teal-300">View Repo</a></div></div>
+                    <div class="cards-grid">
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/tools/md_2_pdf.html" target="_blank" rel="noopener noreferrer">Md 2 pdf</a></h3><p>Convert a md file into pdf.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Sauerbrey/tdms-reader.html" target="_blank" rel="noopener noreferrer">TDMS reader</a></h3><p>Read and Export data from TDMS files.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/ZhInst/zhinst_csv_scrapper.html" target="_blank" rel="noopener noreferrer">CSV Scrapper</a></h3><p>Visualize/convert CSV from Zurich Instruments lock-ins.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                     
-                            <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/xps_tools/XPS_normalize.html" target="_blank" class="hover:text-teal-300">Normalize XPS</a></h3><p class="text-sm text-gray-400">Normalize selected spectra from an Excel file.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div><a href="https://github.com/nitad54448/xps_tools/XPS_normalize.html" target="_blank" class="text-sm text-gray-400 hover:text-teal-300">View Repo</a></div></div>
+                            <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/xps_tools/XPS_normalize.html" target="_blank" rel="noopener noreferrer">Normalize XPS</a></h3><p>Normalize selected spectra from an Excel file.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
 
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/tools/encoder.html" target="_blank" class="hover:text-teal-300">Optical encoder</a></h3><p class="text-sm text-gray-400">Simulate optical encoders.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div><a href="https://github.com/nitad54448/tools/" target="_blank" class="text-sm text-gray-400 hover:text-teal-300">View Repo</a></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/tools/encoder.html" target="_blank" rel="noopener noreferrer">Optical encoder</a></h3><p>Simulate optical encoders.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
 
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/mp4_to_gif/" target="_blank" class="hover:text-teal-300">MP4 to Gif</a></h3><p class="text-sm text-gray-400">Convert MP4 to animated Gif. Not so useful, sometimes I use this for making animated Splash vi's in Labview.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div><a href="https://github.com/nitad54448/mp4_to_gif/" target="_blank" class="text-sm text-gray-400 hover:text-teal-300">View Repo</a></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/mp4_to_gif/" target="_blank" rel="noopener noreferrer">MP4 to Gif</a></h3><p>Convert MP4 to animated Gif. Not so useful, sometimes I use this for making animated Splash vi's in Labview.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
 
                     </div>
                 </div>
@@ -633,249 +1069,240 @@ border-bottom: none;
 
             <!-- 9. GENERAL & FUN -->
             <div class="accordion-item">
-                <button id="accordion-btn-fun" class="accordion-header-button flex justify-between items-center p-6 w-full" aria-expanded="false" aria-controls="accordion-content-fun">
-                    <h2 class="text-2xl text-white flex items-center space-x-4">
-                        <svg class="w-7 h-7 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.563.045.797.77.383 1.131l-4.22 3.69a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.22-3.69c-.383-.336-.18-.943.342-1.041l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+                <button id="accordion-btn-fun" class="accordion-header-button" aria-expanded="false" aria-controls="accordion-content-fun">
+                    <h2 class="accordion-title">
+                        <svg class="category-icon icon-slate" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.563.045.797.77.383 1.131l-4.22 3.69a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.22-3.69c-.383-.336-.18-.943.342-1.041l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
                         <span>General & Fun</span>
                     </h2>
-                    <svg class="w-6 h-6 text-gray-400 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="accordion-content-fun" class="accordion-content" role="region" aria-labelledby="accordion-btn-fun">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/Motricity/" target="_blank" class="hover:text-teal-300">Motricity</a></h3><p class="text-sm text-gray-400 mt-1">Simple response time tester.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/meteo/" target="_blank" class="hover:text-teal-300">Local meteo</a></h3><p class="text-sm text-gray-400 mt-1">Local weather forecast.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/radio/" target="_blank" class="hover:text-teal-300">Radio is not dead</a></h3><p class="text-sm text-gray-400 mt-1">Listen to some radios.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/calendrier/" target="_blank" class="hover:text-teal-300">Calendar</a></h3><p class="text-sm text-gray-400 mt-1">Print a simple calendar.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/apod/" target="_blank" class="hover:text-teal-300">NASA APOD</a></h3><p class="text-sm text-gray-400 mt-1">Displays NASA's Astronomy Picture of the Day.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
-                        <div class="p-4 rounded-lg link-item flex flex-col h-full"><div class="flex-grow"><h3 class="font-medium text-white"><a href="https://nitad54448.github.io/snake/" target="_blank" class="hover:text-teal-300">Snake Game</a></h3><p class="text-sm text-gray-400 mt-1">A classic snake game.</p></div><div class="mt-3 flex justify-between items-center"><div><span class="text-sm font-medium px-3 py-1 rounded-full" style="background-color: #1F2937; color: #F7DF1E;">JavaScript</span></div></div></div>
+                    <div class="cards-grid">
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/Motricity/" target="_blank" rel="noopener noreferrer">Motricity</a></h3><p>Simple response time tester.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/meteo/" target="_blank" rel="noopener noreferrer">Local meteo</a></h3><p>Local weather forecast.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/radio/" target="_blank" rel="noopener noreferrer">Radio is not dead</a></h3><p>Listen to some radios.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/calendrier/" target="_blank" rel="noopener noreferrer">Calendar</a></h3><p>Print a simple calendar.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/apod/" target="_blank" rel="noopener noreferrer">NASA APOD</a></h3><p>Displays NASA's Astronomy Picture of the Day.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
+                        <div class="link-item"><div class="card-body"><h3><a href="https://nitad54448.github.io/snake/" target="_blank" rel="noopener noreferrer">Snake Game</a></h3><p>A classic snake game.</p></div><div class="card-footer"><div class="badge-group"><span class="badge badge-js">JavaScript</span></div></div></div>
                     </div>
                 </div>
             </div>
 
         </main>
 
-<section class="text-center my-12 md:my-20">
-    <h2 class="text-3xl text-white mb-8">Professional Profiles</h2>
-    <div class="flex justify-center items-start flex-wrap gap-4 md:gap-6">
+        <section class="profiles-section">
+            <h2>Professional Profiles</h2>
+            <div class="profiles-list">
 
-        <a href="https://www.icmmo.universite-paris-saclay.fr/annuaire/nita-dragoe/"
-           target="_blank" 
-           rel="noopener noreferrer" 
-           title="University Profile" 
-           class="flex flex-col items-center text-gray-400 hover:text-[#8D5D9A] transition-colors duration-300 w-20 md:w-24">
-            <svg class="w-8 h-8 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path d="M4.26 10.147a60.44 60.44 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-            </svg>
-            <span class="text-xs font-light">University</span>
-        </a>
+                <a href="https://www.icmmo.universite-paris-saclay.fr/annuaire/nita-dragoe/"
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="University Profile" 
+                   class="profile-link profile-univ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path d="M4.26 10.147a60.44 60.44 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                    </svg>
+                    <span>University</span>
+                </a>
 
-        <a href="https://scholar.google.com/citations?user=6S5F9fMAAAAJ&hl=fr" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           title="Google Scholar" 
-           class="flex flex-col items-center text-gray-400 hover:text-[#4285F4] transition-colors duration-300 w-20 md:w-24">
-            <svg class="w-8 h-8 mb-2" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
-            </svg>
-            <span class="text-xs font-light">Scholar</span>
-        </a>
-        
-        <a href="https://orcid.org/0000-0002-5142-9021" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           title="ORCID" 
-           class="flex flex-col items-center text-gray-400 hover:text-[#A6CE39] transition-colors duration-300 w-20 md:w-24">
-            <svg class="w-8 h-8 mb-2" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/>
-            </svg>
-            <span class="text-xs font-light">ORCID</span>
-        </a>
+                <a href="https://scholar.google.com/citations?user=6S5F9fMAAAAJ&hl=fr" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="Google Scholar" 
+                   class="profile-link profile-scholar">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    <span>Scholar</span>
+                </a>
+                
+                <a href="https://orcid.org/0000-0002-5142-9021" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="ORCID" 
+                   class="profile-link profile-orcid">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/>
+                    </svg>
+                    <span>ORCID</span>
+                </a>
 
-        <a href="https://www.researchgate.net/profile/Nita-Dragoe" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           title="ResearchGate" 
-           class="flex flex-col items-center text-gray-400 hover:text-[#00CCBB] transition-colors duration-300 w-20 md:w-24">
-            <svg class="w-8 h-8 mb-2" viewBox="0 0 24 24">
-<path fill="currentColor" d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9 12 9c-2.977 0-5.548 2.248-6.758 4.769zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
-</svg>
-<span class="text-xs font-light">ResearchGate</span>
-</a>
+                <a href="https://www.researchgate.net/profile/Nita-Dragoe" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="ResearchGate" 
+                   class="profile-link profile-rg">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9 12 9c-2.977 0-5.548 2.248-6.758 4.769zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                    </svg>
+                    <span>ResearchGate</span>
+                </a>
 
-</div>
-</section>
+            </div>
+        </section>
 
-<footer class="text-center mt-12 pb-8">
-<p class="text-lg text-gray-400">Last updated on October 5th, 2026.<br>Most of the JS programs available here were vibe-coded. Except where otherwise indicated, all programs on this site are licensed under the
-  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license" target="_blank" noopener noreferrer>
-    CC BY-NC-ND License
-  </a>.
+        <footer class="site-footer">
+            <p>Last updated on October 21st, 2026.<br>Most of the JS programs available here were vibe-coded. Except where otherwise indicated, all programs on this site are licensed under the
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license noopener noreferrer" target="_blank">
+                    CC BY-NC-ND License
+                </a>.
+            </p>
 
+            <div class="footer-github">
+                <a href="https://github.com/nitad54448"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="profile-link profile-github">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </footer>
 
-<div class="flex justify-center mt-4">
-<a href="https://github.com/nitad54448"
-target="_blank"
-rel="noopener noreferrer"
-class="flex flex-col items-center text-gray-500 hover:text-[#6e5494] transition-colors duration-300 w-20">
-<svg class="w-8 h-8 mb-1" viewBox="0 0 24 24" fill="currentColor">
-<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-</svg>
-<span class="text-xs">GitHub</span>
-</a>
-</div>
-</footer>
+    </div>
 
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainEl = document.querySelector('main');
+            const linkItems = document.querySelectorAll('.link-item');
 
+            // --- 1. Dynamic "View Repo" Link Injection & Pre-indexing Search ---
+            const allApps = [];
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        
-        // --- 1. Dynamic "View Repo" Link Injection ---
-        const linkItems = document.querySelectorAll('.link-item');
-        
-        linkItems.forEach(item => {
-            item.addEventListener('click', function(event) {
-                if (event.target.closest('a')) return;
-                const mainLink = item.querySelector('h3 a');
-                if (mainLink && mainLink.href) {
-                    window.open(mainLink.href, '_blank', 'noopener noreferrer');
-                }
-            });
+            linkItems.forEach(item => {
+                const mainAnchor = item.querySelector('h3 a');
+                const descEl = item.querySelector('p');
+                const footerDiv = item.querySelector('.card-footer');
 
-            const mainAnchor = item.querySelector('h3 a');
-            if (mainAnchor) {
-                const url = mainAnchor.href;
-                const footerDiv = item.querySelector('.mt-3');
+                if (mainAnchor) {
+                    const url = mainAnchor.href;
+                    const name = mainAnchor.textContent.trim();
+                    const description = descEl ? descEl.textContent.trim() : '';
 
-                if (url.includes('nitad54448.github.io') && !url.includes('github.com')) {
-                    const urlParts = new URL(url);
-                    const pathSegments = urlParts.pathname.split('/').filter(p => p.length > 0);
-                    
-                    if (pathSegments.length > 0) {
-                        const repoName = pathSegments[0];
-                        const repoUrl = `https://github.com/nitad54448/${repoName}`;
-                        const existingLinks = footerDiv.querySelectorAll('a');
-                        let hasRepoLink = false;
-                        existingLinks.forEach(link => {
-                            if (link.textContent.trim() === 'View Repo') hasRepoLink = true;
-                        });
+                    allApps.push({
+                        name,
+                        url,
+                        description,
+                        searchText: `${name} ${description} ${url}`.toLowerCase()
+                    });
 
-                        if (!hasRepoLink) {
+                    if (footerDiv && url.includes('nitad54448.github.io') && !url.includes('github.com')) {
+                        const urlParts = new URL(url);
+                        const pathSegments = urlParts.pathname.split('/').filter(Boolean);
+
+                        if (pathSegments.length > 0) {
+                            const repoUrl = `https://github.com/nitad54448/${pathSegments[0]}`;
                             const viewRepoLink = document.createElement('a');
                             viewRepoLink.href = repoUrl;
                             viewRepoLink.target = '_blank';
-                            viewRepoLink.className = 'text-sm text-gray-400 hover:text-teal-300 transition-colors duration-200';
+                            viewRepoLink.rel = 'noopener noreferrer';
+                            viewRepoLink.className = 'repo-link';
                             viewRepoLink.textContent = 'View Repo';
-
-                            if (!footerDiv.classList.contains('flex')) {
-                                footerDiv.classList.add('flex', 'justify-between', 'items-center');
-                            } else if (!footerDiv.classList.contains('justify-between')) {
-                                footerDiv.classList.add('justify-between');
-                            }
                             footerDiv.appendChild(viewRepoLink);
                         }
                     }
                 }
+            });
+
+            // --- 2. Application Counter ---
+            const appCount = linkItems.length;
+            const footerPara = document.querySelector('footer p');
+            if (footerPara) {
+                footerPara.innerHTML = footerPara.innerHTML.replace(
+                    /(\d{4})\.<br>/, 
+                    `$1. There are <span class="app-count">${appCount}</span> applications on this site.<br>`
+                );
             }
-        });
 
-        // --- 2. Application Counter ---
-        const appCount = linkItems.length;
-        const footerPara = document.querySelector('footer p');
-        if (footerPara) {
-            footerPara.innerHTML = footerPara.innerHTML.replace(
-                /(\d{4})\.<br>/, 
-                `$1. There are <span class="font-semibold">${appCount}</span> applications on this site.<br>`
-            );
-        }
+            // --- 3. Event Delegation for Accordions & Cards ---
+            mainEl.addEventListener('click', function (event) {
+                const accordionBtn = event.target.closest('.accordion-header-button');
+                if (accordionBtn) {
+                    const content = accordionBtn.nextElementSibling;
+                    const isExpanded = accordionBtn.getAttribute('aria-expanded') === 'true';
+                    accordionBtn.setAttribute('aria-expanded', String(!isExpanded));
+                    accordionBtn.classList.toggle('active', !isExpanded);
+                    if (content) content.classList.toggle('active', !isExpanded);
+                    return;
+                }
 
-        // --- 3. Accordion Logic ---
-        const accordionButtons = document.querySelectorAll('.accordion-header-button');
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const content = this.nextElementSibling;
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                if (event.target.closest('a')) return;
+
+                const card = event.target.closest('.link-item');
+                if (card) {
+                    const mainLink = card.querySelector('h3 a');
+                    if (mainLink && mainLink.href) {
+                        window.open(mainLink.href, '_blank', 'noopener noreferrer');
+                    }
+                }
+            });
+
+            // --- 4. Fast Global Search Logic ---
+            const searchInput = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-search');
+            const resultsContainer = document.getElementById('search-results-container');
+            const resultsList = document.getElementById('results-list');
+
+            function performSearch() {
+                const query = searchInput.value.toLowerCase().trim();
                 
-                if (!isExpanded) {
-                    this.setAttribute('aria-expanded', 'true');
-                    this.classList.add('active');
-                    content.classList.add('active');
+                if (query === '') {
+                    resultsContainer.style.display = 'none';
+                    clearBtn.classList.add('hidden');
+                    return;
+                }
+
+                clearBtn.classList.remove('hidden');
+                const filtered = allApps.filter(app => app.searchText.includes(query));
+
+                resultsContainer.style.display = 'block';
+                if (filtered.length > 0) {
+                    resultsList.innerHTML = filtered.map(app => `
+                        <div class="result-row" data-url="${app.url}">
+                            <div class="result-row-header">
+                                <span class="result-title">${app.name}</span>
+                                <span class="result-url">${app.url}</span>
+                            </div>
+                            <p class="result-desc">${app.description}</p>
+                        </div>
+                    `).join('');
                 } else {
-                    this.setAttribute('aria-expanded', 'false');
-                    this.classList.remove('active');
-                    content.classList.remove('active');
+                    resultsList.innerHTML = `<div class="no-results">No programs found for "${query.replace(/"/g, '&quot;')}"</div>`;
+                }
+            }
+
+            resultsList.addEventListener('click', (e) => {
+                const row = e.target.closest('.result-row');
+                if (row && row.dataset.url) {
+                    window.open(row.dataset.url, '_blank', 'noopener noreferrer');
+                }
+            });
+
+            searchInput.addEventListener('input', performSearch);
+
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    performSearch();
+                    searchInput.blur();
+                }
+            });
+            
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                performSearch();
+                searchInput.focus();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.sticky-search')) {
+                    resultsContainer.style.display = 'none';
                 }
             });
         });
-
-        // --- 4. NEW Global Search Logic ---
-        const searchInput = document.getElementById('search-input');
-        const clearBtn = document.getElementById('clear-search');
-        const resultsContainer = document.getElementById('search-results-container');
-        const resultsList = document.getElementById('results-list');
-
-        // Extract all searchable items once
-        const allApps = Array.from(linkItems).map(item => {
-            const link = item.querySelector('h3 a');
-            const desc = item.querySelector('p');
-            return {
-                name: link ? link.textContent : '',
-                url: link ? link.href : '',
-                description: desc ? desc.textContent : '',
-                element: item
-            };
-        });
-
-        function performSearch() {
-            const query = searchInput.value.toLowerCase().trim();
-            
-            if (query === '') {
-                resultsContainer.style.display = 'none';
-                clearBtn.classList.add('hidden');
-                return;
-            }
-
-            clearBtn.classList.remove('hidden');
-            const filtered = allApps.filter(app => 
-                app.name.toLowerCase().includes(query) || 
-                app.description.toLowerCase().includes(query) ||
-                app.url.toLowerCase().includes(query)
-            );
-
-            if (filtered.length > 0) {
-                resultsContainer.style.display = 'block';
-                resultsList.innerHTML = filtered.map(app => `
-                    <div class="result-row p-3 hover:bg-gray-800 transition-colors cursor-pointer group rounded-md" onclick="window.open('${app.url}', '_blank')">
-                        <div class="flex justify-between items-start">
-                            <span class="text-white font-medium group-hover:text-cyan-400">${app.name}</span>
-                            <span class="text-xs text-gray-500 font-mono hidden md:inline-block">${app.url}</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mt-1 line-clamp-1">${app.description}</p>
-                    </div>
-                `).join('');
-            } else {
-                resultsContainer.style.display = 'block';
-                resultsList.innerHTML = `<div class="p-4 text-gray-500 text-sm text-center">No programs found for "${query}"</div>`;
-            }
-        }
-
-        searchInput.addEventListener('input', performSearch);
-        
-        clearBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            performSearch();
-            searchInput.focus();
-        });
-
-        // Close search results when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.sticky-search')) {
-                resultsContainer.style.display = 'none';
-            }
-        });
-    });
-</script>
+    </script>
 
 </body>
 </html>
